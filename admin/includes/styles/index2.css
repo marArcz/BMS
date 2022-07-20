@@ -1,0 +1,133 @@
+@font-face {
+  src: url("../../../assets/Poppins/Poppins-Regular.ttf");
+  font-family: poppins;
+}
+
+* {
+  font-family: poppins;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+
+#sidemenu-wrapper{
+  transition: 500ms;
+  overflow: hidden;
+}
+#sideMenu {
+  min-height: 100vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  max-width: 100%;
+  width: 100%;
+  transition: 2s width;
+  
+}
+
+#sideMenu .admin-header span{
+  padding: 0;
+}
+
+/* closed sidemenu */
+#sideMenu.closed .nav-link i{
+  text-align: center;
+  font-size: 1.6rem;
+  margin: auto;
+}
+#sideMenu.closed .nav-link span{
+  display: none;
+}
+
+
+
+#sideMenu ul {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0;
+  margin-top: 30px;
+  max-width: 100%;
+  width: 100%;
+}
+
+#sideMenu ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+#sideMenu ul li a::before {
+  content: " ";
+  height: 50px;
+  display: inline-block;
+  width: 5px;
+}
+
+#sideMenu ul li.active {
+  background: #1b97aa;
+}
+
+#sideMenu ul li.active a::before {
+  background: #05162c;
+}
+
+#sideMenu ul li.header {
+  padding: 8px 20px;
+  background: #117e8f;
+  color: #dbdbdb;
+  font-size: 0.8rem;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+#sideMenu ul li.header a{
+  max-width: 100%;
+}
+
+#sideMenu ul a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  width: 100%;
+  padding: 0 10px 0 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          max-width: 100%;
+}
+
+#sideMenu ul a i {
+  margin: 0 10px;
+}
+
+main {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@media screen and (max-width:980px){
+  #sideMenu.closed{
+    width: 0px;
+  }
+  #sideMenu.closed li.header{
+    padding: 0;
+  }
+  #sideMenu.closed .admin-header p{
+    padding: 0;
+  }
+
+}
