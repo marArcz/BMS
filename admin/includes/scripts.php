@@ -10,7 +10,10 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <script src="../assets//qrcodejs-master//qrcode.min.js"></script>
 <script src="../assets//Toast.js-master//dist//js//Toast.min.js"></script>
-
+<script src="../assets//simditor-2.3.28//site//assets//scripts//module.js"></script>
+<script src="../assets//simditor-2.3.28//site//assets//scripts//hotkeys.js"></script>
+<script src="../assets//simditor-2.3.28//site//assets//scripts//uploader.js"></script>
+<script src="../assets//simditor-2.3.28//site//assets//scripts//simditor.js"></script>
 <script>
     <?php
     if (isset($_SESSION['success'])) {

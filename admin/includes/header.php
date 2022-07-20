@@ -23,6 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200;300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets//simditor-2.3.28//styles//simditor.css">
 <style>
     .toastjs-container{
         z-index:9999;
