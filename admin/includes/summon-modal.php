@@ -15,12 +15,10 @@
                     <div class="text-right">
                         <button class="btn btn-primary" id="print">Print <i class="bx bx-printer"></i></button>
                     </div>
-                    <div class="card-body shadow mx-auto mb-3" id="page1-form" style="width:768px">
+                    <div class="card-body shadow mx-auto mb-3" id="page1-form" style="width:768px;min-height:1248px">
                     </div>
-                    <div class="card-body shadow mx-auto mb-3" id="page2-form" style="width:768px">
-                    <div class="card-body shadow mx-auto mb-3 p-4" id="page2-form" style="width:768px">
-                    </div>
-                    <div class="card-body shadow mx-auto mb-3" id="page3-form" style="width:768px">
+                    <div class="card-body shadow mx-auto mb-3" id="page2-form" style="width:768px;min-height:1248px">
+                    <div class="card-body shadow mx-auto mb-3" id="page3-form" style="width:768px;min-height:1248px">
                     </div>
                 </div>
 

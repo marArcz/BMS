@@ -48,7 +48,7 @@
                 </div>
                 <div class="card shadow-sm mt-2 mx-auto" style="width:768px">
                     <div class="card-body bg-white">
-                        <div id="page1-editor" data-instanced="1" class="memo-editor rounded-0 border-light">
+                        <div id="page1-editor" data-instanced="1" class="memo-editor rounded-0 border-light" style="min-height: 1248px;">
                             <div class="container my-3 f-roman text-primary">
                                 <div class="row my-0">
                                     <div class="col">
@@ -164,11 +164,11 @@
                 </div>
                 <div class="card mt-3 mx-auto" style="width:768px">
                     <div class="card-body">
-                        <div name="" id="page2-editor"  class="  memo-editor rounded-0 border-light position-relative" style="min-height:1056px">
+                        <div name="" id="page2-editor" class="  memo-editor rounded-0 border-light position-relative" style="min-height:1248px">
                             <div class="container my-3 text-primary">
                                 <p class="text-center"><strong>OFFICER'S RETURN</strong></p>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-5">
                                         <p class="text-center">
                                             I served this summon upon respondent
                                         </p>
@@ -180,7 +180,7 @@
                                     <p class="my-0">On this</p>
                                     <input type="text" class="mx-1 py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary" style="width: 80px">
                                     <p class="my-0">day of</p>
-                                    <input type="text" class="mx-1 py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary" style="width:100px">
+                                    <input type="text" class="mx-1 py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary" style="width:200px">
                                     <p class="my-0">. 2022 and upon respondent</p>
                                 </div>
                                 <div class="d-flex align-items-end">
@@ -228,6 +228,45 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="mt-2 row">
+                                    <div class="col-md">
+                                        <input type="text" class=" text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
+                                    </div>
+                                    <div class="col-md">
+                                        <p class="my-2">4. Leaving said summons at his/ their office / place of business with</p>
+                                        <input type="text" class=" text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
+                                        <p class="text-center">Name</p>
+
+                                        <p>A competent person in charge thereof.</p>
+
+                                        <input type="text" class="mt-3 text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
+                                        <p class="text-center">Officer</p>
+
+                                    </div>
+                                </div>
+                                <p class="text-start">
+                                    Received by respondent/s representative/s.
+                                </p>
+                                <div class="mt-2 row">
+                                    <div class="col-md">
+                                        <input type="text" class=" text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
+                                        <p class="text-center">Signature</p>
+                                    </div>
+                                    <div class="col-md">
+                                        <input type="text" class=" text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
+                                        <p class="text-center">Date</p>
+                                    </div>
+                                </div>
+                                <div class="mt-2 row">
+                                    <div class="col-md">
+                                        <input type="text" class=" text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
+                                        <p class="text-center">Signature</p>
+                                    </div>
+                                    <div class="col-md">
+                                        <input type="text" class=" text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
+                                        <p class="text-center">Date</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -235,7 +274,7 @@
                 </div>
                 <div class="card mt-3 mx-auto" style="width:768px">
                     <div class="card-body">
-                        <div name="" id="page3-editor" class="  memo-editor rounded-0 border-light position-relative" style="min-height:1056px"></div>
+                        <div name="" id="page3-editor" class="  memo-editor rounded-0 border-light position-relative" style="min-height:1248px"></div>
 
                     </div>
                 </div>
