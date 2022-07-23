@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@200;300;400&display=swap");
+@font-face {
+  src: url("../../../assets/Poppins/Poppins-Regular.ttf");
+  font-family: poppins;
+}
+* {
+  font-family: "Barlow";
+}
+
+.f-poppins {
+  font-family: "Barlow";
+}
+a {
+  text-decoration: none;
+}
+// scroll bar
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 2px;
+  border-radius: 10%;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(61, 61, 61);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.b_form {
+  width: 215.9mm;
+  height: 1056px;
+  .w-free{
+    height: auto;
+  }
+  font-size: 12pt;
+  * {
+    font-family: "Times New Roman", Times, serif;
+    z-index: 2;
+  }
+  p {
+    font-size: 12pt;
+  }
+  .form-header {
+    line-height: 8px;
+  }
+  .logo {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  div.bg_logo {
+    // position: absolute;
+    // width: 100%;
+    z-index: 1;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.6;
+  }
+}
+
+body {
+  max-height: 100vh;
+  overflow: hidden;
+  .content-wrapper {
+    box-sizing: border-box;
+    max-height: 100vh;
+    overflow-y: scroll;
+    padding-bottom: 30vh;
+  }
+}
+.main-sidebar {
+  overflow-y: hidden;
+  max-height: 100vh;
+  padding-bottom: 200px;
+
+  &:hover {
+    overflow-y: scroll;
+    box-shadow: 3px 3px 1px solid grey;
+  }
+  .sidebar {
+    // overflow-y: hidden;
+    // max-height: 100vh;
+ 
+  }
+}
+
+@media screen and (max-height:750px) {
+    body{
+      max-height: unset !important;
+      overflow-y: scroll !important;
+    }
+}

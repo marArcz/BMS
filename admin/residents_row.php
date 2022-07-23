@@ -1,0 +1,17 @@
+<?php
+    if(isset($_POST['id'])){
+        session_start();
+        require("./includes/conn.php");
+
+        $id = $_POST['id'];
+
+        $sql="SELECT *, residents.id AS rID FROM residents INNER JOIN household ON residents.household = household.id WHERE residents.id = ?";
+        
+        $query = prep_stmt($sql);
+        $query->bind_param('i',$id);
+        $query->execute();
+        $result = $query->get_result()->fetch_assoc();
+
+        echo json_encode($result);
+    }
+?>
