@@ -180,7 +180,7 @@
                                     <p class="my-0">On this</p>
                                     <input type="text" class="mx-1 py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary" style="width: 80px">
                                     <p class="my-0">day of</p>
-                                    <input type="text" class="mx-1 w-50 py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                    <input type="text" class="mx-1 py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary" style="width:100px">
                                     <p class="my-0">. 2022 and upon respondent</p>
                                 </div>
                                 <div class="d-flex align-items-end">
