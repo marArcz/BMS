@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin | Memos</title>
     <?php include "./includes/header.php" ?>
+    <style>
+        .nicEdit-selected{
+            outline: none;            
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini skin-blue-light">
@@ -42,6 +47,8 @@
                         // get baranggay 
                         $query = run_query("SELECT * FROM baranggay");
                         $baranggay = $query->fetch_assoc();
+                        $query = run_query("SELECT * FROM officials INNER JOIN positions ON officials.position = positions.id WHERE positions.description LIKE '%Captain%'");
+                        $captain = $query->fetch_assoc();
                         ?>
                        
                         </textarea>
@@ -56,10 +63,10 @@
     <?php include "./includes/memo-modal.php" ?>
 
     <script>
-         bkLib.onDomLoaded(function() {
+        bkLib.onDomLoaded(function() {
             new nicEditor({
-                fullPanel:false,
-                buttonList:[
+                fullPanel: false,
+                buttonList: [
                     'bold',
                     'italic',
                     'left',
@@ -71,11 +78,13 @@
                 ]
             }).panelInstance('memo');
         });
+
         function setBaranggayDetails() {
             $("#baranggayLogo").attr("src", "<?php echo $baranggay['baranggayLogo'] ?>")
             $("#cityLogo").attr("src", "<?php echo $baranggay['cityLogo'] ?>")
             $("#city-txt").html("<?php echo $baranggay['city'] ?>")
             $("#baranggay-name").html("<?php echo $baranggay['name'] ?>")
+            $("#captain").html("<?php echo $captain['firstname'] ?> <?php echo $captain['lastname'] ?>")
         }
         $("#print").click(function() {
             var element = document.getElementById('memo-form');
@@ -116,7 +125,9 @@
                     'content': $($(".nicEdit-main")[0]).html()
                 }, function(res) {
                     console.log(res);
-                    setTimeout($("#save-status-txt").html("Changes Saved<i class='bx bx-check'></i>"), 2000);
+                    setTimeout(() => {
+                        $("#save-status-txt").html("Changes Saved<i class='bx bx-check'></i>")
+                    }, 2000);
                     // setTimeout($("#save-status-txt").html("Changes are save automatically..."),5000);
                 })
             }, 10000);
@@ -165,7 +176,7 @@
                 e.preventDefault();
             }
         });
-       
+
 
 
 

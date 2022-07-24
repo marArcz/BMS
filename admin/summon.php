@@ -25,7 +25,16 @@
         <?php include 'includes/navbar.php'; ?>
         <?php include 'includes/sideMenu.php'; ?>
         <div class="content-wrapper">
-
+            <section class="content-header">
+                <h1 style="font-family:poppins">
+                    Summon
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="home.php"><i class="fa fa-dashboard"></i>Home </a> </li>
+                    <li class="active"> Memos</li>
+                </ol>
+            </section>
+            <hr>
             <?php
             include "./includes/alert.php";
             // get baranggay 
@@ -37,19 +46,14 @@
             ?>
             <!-- Main content -->
             <section class="content">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <button data-target="#printModal" id="preview" data-toggle="modal" class="btn btn-primary btn-sm btn-rounded">Preview</button>
-                            <button data-target="#purposeModal" id="" data-toggle="modal" class="btn btn-default ml-2 btn-sm">New <i class="bx bx-plus"></i></button>
-                            <p class="ml-auto my-1 text-black-50" id="save-status-txt">Changes are save automatically...</p>
-                        </div>
+                <div class="card shadow-sm  mx-auto" style="width:768px">
+                    <div class="card-header">
+                        <button data-target="#printModal" id="preview" data-toggle="modal" class="btn btn-primary btn-sm btn-rounded">Print Summon</button>
+
                     </div>
-                </div>
-                <div class="card shadow-sm mt-2 mx-auto" style="width:768px">
                     <div class="card-body bg-white">
                         <div id="page1-editor" data-instanced="1" class="memo-editor rounded-0 border-light" style="min-height: 1248px;">
-                            <div class="container my-3 f-roman text-primary">
+                            <div class="container p-4 f-roman text-primary">
                                 <div class="row my-0">
                                     <div class="col">
                                         <div class="row justify-content-end">
@@ -98,7 +102,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <br>
                                 <ul class="pl-3 mb-0">
                                     <li class="m-0 p-0 ">Against-</li>
                                 </ul>
@@ -108,49 +111,54 @@
                                         <input type="text" class="form-control border-left-0 border-top-0  border-right-0 text-primary">
                                     </div>
                                 </div>
-                                <p class="mt-3">Respondent/s</p>
-                                <br>
-                                <div class="text-center">
-                                    <p class="f-poppins">COMPLAINT/S</p>
-                                    <p class="f-poppins my-0">
-                                        I/WE hereby complain against above named person/s for violating my/our
-                                        rights and interest in the following manner:
-                                    </p>
-                                </div>
-                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
-                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
-                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
-                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
-                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
-                                <p class="f-poppins my-0">THEREFORE, I/WE pray that the following relief/s be granted to me/us in accordance with law and/or equity.</p>
-                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
-                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
-                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
-
-                                <br>
-                                <div class="f-poppins d-flex text-primary align-items-end justify-content-center">
-                                    <p class="my-0 f-poppins">Made this</p>
-                                    <input type="text" style="width: 70px;" class=" text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
-                                    <p class="my-0 f-poppins">day of</p>
-                                    <input type="text" style="width: 100px;" class=" text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
-                                    <p class="my-0 f-poppins"><?php echo date('Y') ?>.</p>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-5">
+                                <p class="mt-2">Respondent/s</p>
+                                <p class="text-center">SUMMONS</p>
+                                <div class="row gx-0">
+                                    <div class="col-auto m-0">
+                                        <p class="m-0">TO:</p>
+                                    </div>
+                                    <div class="col">
                                         <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
-                                        <p class="f-poppins text-center">Complaint/s</p>
+                                        <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                        <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                        <p class="text-center">Respondent/s</p>
+
                                     </div>
                                 </div>
-                                <div class="f-poppins d-flex text-primary align-items-end justify-content-start">
-                                    <p class="my-0 f-poppins">Received and filed this</p>
-                                    <input type="text" style="width: 70px;" class=" text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
-                                    <p class="my-0 f-poppins">day of</p>
-                                    <input type="text" style="width: 100px;" class=" text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
-                                    <p class="my-0 f-poppins"><?php echo date('Y') ?>.</p>
-                                </div>
-                                <br><br>
 
-                                <div class="">
+                                <p class="text-center my-0">
+                                    You are hereby summoned to appear before me, in person together with your
+                                </p>
+                                <div class="d-flex align-items-end justify-content-center">
+                                    <p class="my-0"> witnesses on the </p>
+                                    <input type="text" style="width: 70px;" class="py-0 pb-0 text-center my-0 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                    <p class="my-0"> day of</p>
+                                    <input type="text" style="width: 120px;" class="py-0 text-center my-0 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                    <p class="my-0"><?php echo date("Y") ?> at</p>
+                                    <input type="text" style="width: 70px;" class="py-0 text-center my-0 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                    <p class="my-0">o'clock in the</p>
+
+                                </div>
+                                <div class="my-2 text-center">
+                                    morning/afternoon then and there to answer to a complianant made before me, copy of which is attached hereto for the mediation / conciliation of your dispute with complainant
+                                </div>
+                                <br>
+                                <p class="text-center">You are hereby warned that if you refuse or witfully fail to appear in obedience to this summons, you shall be barred from filing any counterclaim arising from said complainant.</p>
+                                <br>
+                                <p class="text-center">FAIL NOT or else face punishment as for contempt of court</p>
+                                <div class="d-flex align-items-end justify-content-center">
+                                    <p class="my-0">This</p>
+                                    <input type="text" style="width: 70px;" class="py-0 pb-0 text-center my-0 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                    <p class="my-0">day of</p>
+                                    <input type="text" style="width: 70px;" class="py-0 pb-0 text-center my-0 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                    <p class="my-0"><?php echo date('Y') ?>.</p>
+                                </div>
+                                <br><br><br><br>
+
+                                <div class="text-right">
                                     <p class="f-poppins mb-0 text-uppercase"><strong class="f-poppins"><?php echo $captain['firstname'] . ' ' . $captain['middlename'][0] . '. ' . $captain['lastname'] ?></strong></p>
                                     <p class="f-poppins ">Punong Barangay / Lupon chairman</p>
                                 </div>
@@ -165,7 +173,7 @@
                 <div class="card mt-3 mx-auto" style="width:768px">
                     <div class="card-body">
                         <div name="" id="page2-editor" class="  memo-editor rounded-0 border-light position-relative" style="min-height:1248px">
-                            <div class="container my-3 text-primary">
+                            <div class="container p-4 text-primary">
                                 <p class="text-center"><strong>OFFICER'S RETURN</strong></p>
                                 <div class="row">
                                     <div class="col-md-5">
@@ -274,7 +282,111 @@
                 </div>
                 <div class="card mt-3 mx-auto" style="width:768px">
                     <div class="card-body">
-                        <div name="" id="page3-editor" class="  memo-editor rounded-0 border-light position-relative" style="min-height:1248px"></div>
+                        <div name="" id="page3-editor" class="  memo-editor rounded-0 border-light position-relative" style="min-height:1248px">
+                            <div class="container p-4  f-roman text-primary">
+                                <div class="row my-0">
+                                    <div class="col">
+                                        <div class="row justify-content-end">
+                                            <div class="col-6 ">
+                                                <img src="<?php echo $baranggay['cityLogo'] ?>" class="img-fluid" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto text-center">
+                                        <p class="my-0"><small>Republic of the Philippines</small></p>
+                                        <p class="my-0"><small>Province of <?php echo $baranggay['province'] ?></small></p>
+                                        <p class="text-uppercase my-0"><small>Municipality of <?php echo $baranggay['city'] ?></small></p>
+                                        <p class="text-uppercase my-0">
+                                            <small><strong>Barangay <?php echo $baranggay['name'] ?></strong></small>
+                                        </p>
+                                        <p class="mt-3">OFFICE OF THE LUPONG TAGAPAMAYAPA</p>
+                                    </div>
+                                    <div class="col text-right">
+                                        <div class="row justify-content-start">
+                                            <div class="col-6 text-right">
+                                                <img src="<?php echo $baranggay['baranggayLogo'] ?>" class="img-fluid" alt="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <hr class="my-1">
+                                <div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="text" class="form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                            <input type="text" class="form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                            <p class="mt-3">Complainant/s</p>
+                                        </div>
+                                        <div class="col text-right">
+                                            <div class="text-right">
+                                                <div class="d-flex justify-content-start">
+                                                    <p for="" class="my-1 w-100">Brgy. Case No:</p>
+                                                    <input type="text" class="form-control border-left-0 border-top-0  border-right-0 w-100 text-primary">
+                                                </div>
+                                                <div class="d-flex justify-content-start">
+                                                    <p for="" class="my-1 w-100">For:</p>
+                                                    <input type="text" class="form-control border-left-0 border-top-0  border-right-0 w-100 text-primary">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="pl-3 mb-0">
+                                    <li class="m-0 p-0 ">Against-</li>
+                                </ul>
+                                <div class="row mt-0">
+                                    <div class="col-5">
+                                        <input type="text" class="form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                        <input type="text" class="form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                    </div>
+                                </div>
+                                <p class="mt-2">Respondent/s</p>
+                                <div class="text-center">
+                                    <p class="f-poppins">COMPLAINT/S</p>
+                                    <p class="f-poppins my-0">
+                                        I/WE hereby complain against above named person/s for violating my/our
+                                        rights and interest in the following manner:
+                                    </p>
+                                </div>
+                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                <p class="f-poppins my-0">THEREFORE, I/WE pray that the following relief/s be granted to me/us in accordance with law and/or equity.</p>
+                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
+
+                                <div class="f-poppins d-flex text-primary align-items-end justify-content-center">
+                                    <p class="my-0 f-poppins">Made this</p>
+                                    <input type="text" style="width: 70px;" class=" text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
+                                    <p class="my-0 f-poppins">day of</p>
+                                    <input type="text" style="width: 100px;" class=" text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
+                                    <p class="my-0 f-poppins"><?php echo date('Y') ?>.</p>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-5">
+                                        <input type="text" class="py-1 my-1 form-control border-left-0 border-top-0  border-right-0 text-primary">
+                                        <p class="f-poppins text-center">Complaint/s</p>
+                                    </div>
+                                </div>
+                                <div class="f-poppins d-flex text-primary align-items-end justify-content-start">
+                                    <p class="my-0 f-poppins">Received and filed this</p>
+                                    <input type="text" style="width: 70px;" class=" text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
+                                    <p class="my-0 f-poppins">day of</p>
+                                    <input type="text" style="width: 100px;" class=" text-center f-poppins border-top-0 border-left-0 border-right-0 form-control mx-1">
+                                    <p class="my-0 f-poppins"><?php echo date('Y') ?>.</p>
+                                </div>
+                                <br><br>
+
+                                <div class="">
+                                    <p class="f-poppins mb-0 text-uppercase"><strong class="f-poppins"><?php echo $captain['firstname'] . ' ' . $captain['middlename'][0] . '. ' . $captain['lastname'] ?></strong></p>
+                                    <p class="f-poppins ">Punong Barangay / Lupon chairman</p>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -290,28 +402,6 @@
         var myNicEditor = new nicEditor()
 
         const loadPages = () => {
-            let page1Content = $("#page1-editor").val()
-            let page2Content = $("#page2-editor").val()
-            let page3Content = $("#page3-editor").val()
-            var editor = new nicEditor({
-                fullPanel: false,
-                buttonList: [
-                    'bold',
-                    'italic',
-                    'underline',
-                    'left',
-                    'center',
-                    'right',
-                    'ul',
-                    'ol',
-                    'fontSize',
-                    'forecolor'
-                ]
-            })
-            editor.setPanel("editor-panel")
-            editor.addInstance("page1-editor")
-            // editor.addInstance("page2-editor")
-            editor.addInstance("page3-editor")
 
 
         }
@@ -330,11 +420,11 @@
                 margin: 0,
                 padding: 0,
                 html2canvas: {
-                    scale: 2
+                    scale: 1
                 },
                 jsPDF: {
                     unit: "in",
-                    format: [8, 14],
+                    format: [8, 15],
                     orientation: 'portrait',
                     font: 'Times New Roman'
                 }
@@ -344,14 +434,16 @@
             var page3 = $("#page3-form")[0]
             var pages = [page1, page2, page3]
             let doc = html2pdf().set(opt).from(pages[0]).toPdf()
-            for (let j = 1; j < pages.length; j++) {
+            for (let x = 1; x < pages.length; x++) {
                 doc = doc.get('pdf').then(
                     pdf => {
                         pdf.addPage()
                     }
-                ).from(pages[j]).toContainer().toCanvas().toPdf()
+                ).from(pages[x]).toContainer().toCanvas().toPdf()
             }
+            console.log('proccessing to print')
             doc.get('pdf').then(pdf => {
+                console.log("printing")
                 pdf.autoPrint()
                 window.open(pdf.output('bloburl'), '_blank');
             })
