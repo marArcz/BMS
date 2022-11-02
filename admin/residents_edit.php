@@ -18,17 +18,18 @@
         $income = $_POST['income'];
         $household = $_POST['household'];
         $condition = $_POST['condition'];
+        $voter = $_POST['voter'];
         $blood = $_POST['blood'];
         $relationship = $_POST['relationship'];
         $id = $_POST['id'];
 
         $sql="UPDATE residents SET firstname=?,middlename=?,lastname=?,age=?,gender=?,birthDate=?,birthPlace=?,healthCondition=?,relationshipToHead=?,bloodType=?,
-            civilStatus=?,occupation=?,income=?,household=?,religion=?,nationality=?,education=? WHERE id =?
+            civilStatus=?,occupation=?,income=?,household=?,religion=?,nationality=?,education=?, voter=? WHERE id =?
         ";
         
         if($query = prep_stmt($sql)){
             $query->bind_param("sssisssssssssssssi",
-                $fname,$mname,$lname,$age,$gender,$birthDate, $birthPlace, $condition, $relationship,$blood,$civil, $occupation, $income, $household, $religion,$nationality, $education,$id
+                $fname,$mname,$lname,$age,$gender,$birthDate, $birthPlace, $condition, $relationship,$blood,$civil, $occupation, $income, $household, $religion,$nationality, $education,$voter,$id
             );
             if($query->execute()){
                 LogAction($_SESSION['admin_id'],"Updated a resident record");

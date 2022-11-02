@@ -16,13 +16,13 @@
                     <i class="bx bxs-dashboard"></i>
                     <span>Dashboard</span>
                 </a>
-            </li>
+            <!--</li>
             <li class="nav-item ">
                 <a href="logbook.php" class="nav-link text-dark">
                     <i class="bx bxs-book"></i>
                     <span>Residents Logbook</span>
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item" title="Here you can view blotter reports" data-toggle="tooltip" data-placement="right">
                 <a href="blotter_reports.php" class="nav-link text-dark ">
                     <i class="fa fa-exclamation-triangle"></i>
@@ -89,8 +89,8 @@
                     <i class="bx bxs-note"></i>
                     <span>Memorandum</span>
                 </a>
-            </li>
-            <li class="header">Settings</li>
+            </li> -->
+             <li class="header">Settings</li>
             <li class="nav-item" title="Here you can manage baranggay information." data-toggle="tooltip" data-placement="right">
                 <a href="baranggay.php" class="nav-link text-dark">
                     <i class="bx bxs-city"></i>

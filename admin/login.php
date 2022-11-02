@@ -11,6 +11,7 @@
         $user = $query->get_result()->fetch_assoc();
         session_start();
         $_SESSION['admin_id'] = $user['id'];
-        header("Location: home.php");
+        // header("Location: .php");
+        header("location: household.php");
     }
 ?>

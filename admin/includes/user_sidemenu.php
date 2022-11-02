@@ -36,12 +36,12 @@
                     <span>Permit</span>
                 </a>
             </li>
-            <li class="nav-item" title="Here you can manage permit records." data-toggle="tooltip" data-placement="right">
+           <!-- <li class="nav-item" title="Here you can manage permit records." data-toggle="tooltip" data-placement="right">
                 <a href="id-scanner.php" class="nav-link text-dark">
                     <i class="bx bxs-book"></i>
                     <span>Residents log book</span>
                 </a>
-            </li>
+            </li> -->
         </ul>
     </section>
 

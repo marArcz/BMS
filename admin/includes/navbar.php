@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a href="#" class="logo bg-light text-primary">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span style="font-size:14px" class="logo-mini"><b>B</b>MS</span>
+        <span style="font-size:14px" class="logo-mini"><b>B</b>IS</span>
         <!-- logo for regular state and mobile devices -->
-        <span style="font-size:12px" class="logo-lg">Baranggay Management System</span>
+        <span style="font-size:12px" class="logo-lg">Baranggay Information System</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top py-0 " style="background:#4099ff">

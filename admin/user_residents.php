@@ -77,11 +77,11 @@
                                                                 <i class="bx bx-fullscreen"></i> Full Information
                                                             </button>
                                                         </a>
-                                                        <a id="" class="dropdown-item" data-toggle="tooltip" data-placement="left" title='Print Resident ID with QR Code'>
+                                                        <!-- <a id="" class="dropdown-item" data-toggle="tooltip" data-placement="left" title='Print Resident ID with QR Code'>
                                                             <button type="button" class="btn p-0 print-id" data-toggle="modal" data-target="#print-modal" data-id="<?php echo $row['rID'] ?>" <?php echo $count == 0 ? 'disabled' : '' ?>>
                                                                 <i class="fa fa-sticky-note-o"></i> Print ID
                                                             </button>
-                                                        </a>
+                                                        </a> -->
                                                         <a id="clearance_btn" class="dropdown-item" data-toggle="tooltip" data-placement="left" title="<?php echo $count == 0 ? 'You need to add a baranggay captain first!' : 'Print baranggay clearance'  ?>">
                                                             <button type="button" class="btn p-0 edit" data-toggle="modal" data-target="#clearanceModal" data-id="<?php echo $row['rID'] ?>" <?php echo $count == 0 ? 'disabled' : '' ?>>
                                                                 <i class="bx bx-note"></i> Print Clearance
@@ -180,13 +180,19 @@
                     $("#del_img_preview").attr("src", res.photo);
                     $(".residentBox").val(id);
                     // view Information
-                    var fields = ["fname", "mname", "lname", "gender", "bdate", "bplace", "age", "education", "religion", "nationality", "civil_status", "occupation", "income", "household", "condition", "blood", "relationship"];
+                    var fields = ["fname", "mname", "lname", "gender", "bdate", "bplace", "age", "education", "religion", "nationality", "civil_status", "occupation", "income", "household", "condition", "blood", "relationship","voter"];
                     var household = `#${res.number} Zone ${res.zone}`;
                     // var age = res.age > 1 ? `${res.age} yr. old` : `${res.age} yrs. old`
-                    var values = [res.firstname, res.middlename, res.lastname, res.gender, res.birthDate, res.birthPlace, res.age, res.education, res.religion, res.nationality, res.civilStatus, res.occupation, res.income, household, res.healthCondition, res.bloodType, res.relationshipToHead];
+                    var values = [res.firstname, res.middlename, res.lastname, res.gender, res.birthDate, res.birthPlace, res.age, res.education, res.religion, res.nationality, res.civilStatus, res.occupation, res.income, household, res.healthCondition, res.bloodType, res.relationshipToHead,res.voter];
                     $("#view_img").attr("src", res.photo);
                     for (let x = 0; x < fields.length; x++) {
-                        $(`#view_${fields[x]}`).html(values[x]);
+
+                        if(fields[x] == "voter"){
+                            $(`#view_${fields[x]}`).html(values[x] == 1 ? "Yes":"No");
+                        }else{
+                            $(`#view_${fields[x]}`).html(values[x]);
+                        }
+
 
                         if (fields[x] == "education" || fields[x] == "civil_status" || fields[x] == "relationship" || fields[x] == "blood") {
                             $(`#edit_${fields[x]}`).html(values[x]).val(values[x]);
@@ -196,7 +202,15 @@
                             } else {
                                 $("#normal_condition").attr("checked", true);
                             }
-                        } else if (fields[x] == "household") {
+                        } 
+                        else if(fields[x] == "voter"){
+                            if (res.voter == 1) {
+                                $("#voter-option-yes").attr("checked", true);
+                            } else {
+                                $("#voter-option-no").attr("checked", true);
+                            }
+                        }
+                        else if (fields[x] == "household") {
                             $(`#edit_${fields[x]}`).val(res.household).html(household);
                         } else {
                             $(`#edit_${fields[x]}`).val(values[x]);

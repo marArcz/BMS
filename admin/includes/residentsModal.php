@@ -123,11 +123,24 @@
                                 <div class="row">
                                     <div class="col">
                                         <label for="">Normal</label>
-                                        <input required type="radio" class="" value="Normal" name="condition" id="condition">
+                                        <input required type="radio" class="" value="Normal" name="condition" id="condition1">
                                     </div>
                                     <div class="col">
                                         <label for="">PWD</label>
-                                        <input required type="radio" class="" value="PWD" name="condition" id="condition">
+                                        <input required type="radio" class="" value="PWD" name="condition" id="condition2">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <label for="">Registered Voter:</label>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="voter-option-1">Yes</label>
+                                        <input required type="radio" class="" value="1" name="voter" id="voter-option-1">
+                                    </div>
+                                    <div class="col">
+                                        <label for="voter-option-2">No</label>
+                                        <input required type="radio" class="" value="0" name="voter" id="voter-option-2">
                                     </div>
                                 </div>
                             </div>
@@ -290,6 +303,12 @@
                             </div>
                             <div class="col-md">
                                 <p class="text-black-50">
+                                    <small>Registered Voter</small>
+                                </p>
+                                <p id="view_voter"></p>
+                            </div>
+                            <div class="col-md">
+                                <p class="text-black-50">
                                     <small>Blood Type</small>
                                 </p>
                                 <p id="view_blood"></p>
@@ -444,6 +463,19 @@
                                     <div class="col">
                                         <label for="">PWD</label>
                                         <input required type="radio" class="" value="PWD" name="condition" id="pwd_condition">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <label for="">Registered Voter:</label>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="voter-option-1">Yes</label>
+                                        <input required type="radio" class="" value="1" name="voter" id="voter-option-yes">
+                                    </div>
+                                    <div class="col">
+                                        <label for="voter-option-2">No</label>
+                                        <input required type="radio" class="" value="0" name="voter" id="voter-option-no">
                                     </div>
                                 </div>
                             </div>
@@ -865,7 +897,7 @@
 </div>
 
 <!-- print id modal -->
-<div class="modal fade" id="print-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--<div class="modal fade" id="print-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog rounded">
         <div class="modal-content">
             <div class="modal-body rounded ">
@@ -903,7 +935,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 
