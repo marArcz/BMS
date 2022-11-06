@@ -45,11 +45,11 @@
                         <div class="row mb-2">
                             <div class="col-md">
                                 <label for="">Birth date:</label>
-                                <input required type="date" class="form-control" name="b_date" id="age">
+                                <input required type="date" class="form-control" name="b_date" id="bdate">
                             </div>
                             <div class="col-md">
                                 <label for="">Birth place:</label>
-                                <input required type="text" class="form-control" name="b_place" id="age">
+                                <input required type="text" class="form-control" name="b_place" id="bplace">
                             </div>
                             <div class="col-md">
                                 <label for="">Age:</label>
@@ -62,6 +62,9 @@
                                     <option value="College Graduate">College Graduate</option>
                                     <option value="Highschool Graduate">Highschool Graduate</option>
                                     <option value="Elementary Graduate">Elementary Graduate</option>
+                                    <option value="College Under Graduate">College Under Graduate</option>
+                                    <option value="Highschool Under Graduate">Highschool Under Graduate</option>
+                                    <option value="Elementary Under Graduate">Elementary Under Graduate</option>
                                 </select>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 <!-- add modal -->
 <div class="modal fade shadow" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content ">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Add Blotter</h5>
@@ -16,16 +16,17 @@
                                 <label for="complainant">Complainant: </label>
                             </div>
                             <div class="col">
-                                <select name="complainant" id="complainant" class="form-control">
+                                <input type="text" name="complainant" class="form-control text-capitalize" list="complainant-list">
+                                <datalist id="complainant-list">
                                     <?php
                                     $query = run_query("SELECT * FROM residents");
                                     while ($row = $query->fetch_assoc()) {
                                     ?>
-                                        <option value="<?php echo $row['id'] ?>"><?php echo $row['firstname'] . ' ' . $row['lastname'] ?></option>
+                                        <option value="<?php echo $row['firstname'] . ' ' . $row['lastname'] ?>"></option>
                                     <?php
                                     }
                                     ?>
-                                </select>
+                                </datalist>
                             </div>
                         </div>
                         <!-- suspect -->
@@ -34,16 +35,17 @@
                                 <label for="suspect">Person to complain: </label>
                             </div>
                             <div class="col">
-                                <select name="suspect" id="suspect" class="form-control">
+                                <input type="text" name="suspect" class="form-control text-capitalize" list="suspect-list">
+                                <datalist id="suspect-list">
                                     <?php
                                     $query = run_query("SELECT * FROM residents");
                                     while ($row = $query->fetch_assoc()) {
                                     ?>
-                                        <option value="<?php echo $row['id'] ?>"><?php echo $row['firstname'] . ' ' . $row['lastname'] ?></option>
+                                        <option value="<?php echo $row['firstname'] . ' ' . $row['lastname'] ?>"></option>
                                     <?php
                                     }
                                     ?>
-                                </select>
+                                </datalist>
                             </div>
                         </div>
                         <!-- date -->
@@ -81,7 +83,7 @@
                                 <textarea required name="reason" id="reason" class="form-control" cols="30" rows="10"></textarea>
                             </div>
                         </div>
-                        
+
 
                     </div>
 
@@ -97,7 +99,7 @@
 
 <!-- edit modal -->
 <div class="modal fade shadow" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content ">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Update Blotter Record</h5>
@@ -114,17 +116,17 @@
                                 <label for="complainant">Complainant: </label>
                             </div>
                             <div class="col">
-                                <select name="complainant" id="complainant" class="form-control">
-                                    <option value="" id="edit_complainant"></option>
+                                <input type="text" name="complainant" id="complainant-box" class="form-control" list="complainant-list">
+                                <datalist id="complainant-list">
                                     <?php
                                     $query = run_query("SELECT * FROM residents");
                                     while ($row = $query->fetch_assoc()) {
                                     ?>
-                                        <option value="<?php echo $row['id'] ?>"><?php echo $row['firstname'] . ' ' . $row['lastname'] ?></option>
+                                        <option value="<?php echo $row['firstname'] . ' ' . $row['lastname'] ?>"></option>
                                     <?php
                                     }
                                     ?>
-                                </select>
+                                </datalist>
                             </div>
                         </div>
                         <!-- suspect -->
@@ -133,17 +135,17 @@
                                 <label for="suspect">Person to complaint: </label>
                             </div>
                             <div class="col">
-                                <select name="suspect" id="suspect" class="form-control">
-                                    <option value="" id="edit_suspect"></option>
+                                <input type="text" name="suspect" id="suspect-box" class="form-control" list="complainant-list">
+                                <datalist id="complainant-list">
                                     <?php
                                     $query = run_query("SELECT * FROM residents");
                                     while ($row = $query->fetch_assoc()) {
                                     ?>
-                                        <option value="<?php echo $row['id'] ?>"><?php echo $row['firstname'] . ' ' . $row['lastname'] ?></option>
+                                        <option value="<?php echo $row['firstname'] . ' ' . $row['lastname'] ?>"></option>
                                     <?php
                                     }
                                     ?>
-                                </select>
+                                </datalist>
                             </div>
                         </div>
                         <!-- date -->
@@ -249,13 +251,13 @@
     <div class="modal-dialog modal-lg ">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title infoModal-title" id="exampleModalLabel" id="infoModal-title">Resident Information</h5>
+                <h5 class="modal-title infoModal-title" id="info-title">Resident Information</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <div id="info-content">
                     <!-- photo preview -->
                     <div class="form-group mb-3 text-dark">
                         <div class="row mb-2 align-items-baseline">
@@ -386,7 +388,16 @@
                         <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">DELETE</button> -->
                     </div>
 
-                </form>
+                </div>
+
+                <div id="info-content-none" class="d-none">
+                    <p class="mt-3 text-center">
+                        No record found.
+                    </p>
+                    <p class="mt-2 text-center">
+                        This person is not a resident of our baranggay.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -394,7 +405,7 @@
 
 <!-- reason modal -->
 <div class="modal fade" id="reasonModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog ">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Reason for complaint</h5>
@@ -403,7 +414,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p id="view_reason"></p>
+                <p id="view_reason" class="card-text word-break-word"></p>
             </div>
         </div>
     </div>

@@ -56,13 +56,11 @@ include "./includes/user_session.php";
                                     <?php
                                     $query = run_query("SELECT * FROM blotter ORDER BY status asc, id desc");
                                     while ($bRow = $query->fetch_assoc()) {
-                                        $complainant = run_query("SELECT * FROM residents WHERE id = " . $bRow['complainant'])->fetch_assoc();
-                                        $suspect = run_query("SELECT * FROM residents WHERE id = " . $bRow['suspect'])->fetch_assoc();
 
                                     ?>
                                         <tr>
-                                            <td><?php echo $complainant['firstname'] . ' ' . $complainant['lastname'] ?></td>
-                                            <td><?php echo $suspect['firstname'] . ' ' . $suspect['lastname'] ?></td>
+                                            <td><?php echo $bRow['complainant'] ?></td>
+                                            <td><?php echo $bRow['suspect'] ?></td>
                                             <td>
                                                 <a href="#" data-toggle="tooltip" data-placement="top" title="View complainant's complaints">
                                                     <button data-target="#reasonModal" data-toggle="modal" data-id="<?php echo $bRow['id'] ?>" class="edit btn btn-dark btn-sm"><span class="fa fa-eye"></span> View</button>
@@ -85,10 +83,10 @@ include "./includes/user_session.php";
                                                     </a>
 
                                                     <div class="dropdown-menu bg-light shadow" aria-labelledby="dropdownMenuLink">
-                                                        <a class="dropdown-item view-info" data-title="Suspect Information" href="#infoModal" data-toggle="modal" data-id="<?php echo $suspect['id'] ?>">
+                                                        <a class="dropdown-item view-info" data-title="Suspect Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['suspect'] ?>">
                                                             <i class="fa fa-info-circle"></i> Suspect Info
                                                         </a>
-                                                        <a class="dropdown-item view-info" data-title="Complainant Information" href="#infoModal" data-toggle="modal" data-id="<?php echo $complainant['id'] ?>">
+                                                        <a class="dropdown-item view-info" data-title="Complainant Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['complainant'] ?>">
                                                             <i class="fa fa-info-circle"></i> Complainant Info
                                                         </a>
                                                     </div>
@@ -190,29 +188,43 @@ include "./includes/user_session.php";
             })
         })
         $(document).on("click", ".view-info", function() {
-            const id = $(this).attr("data-id");
+            const name = $(this).attr("data-name");
+            console.log('name: ', name)
             var title = $(this).attr("data-title");
+            $("#info-title").html(title);
+
+            $("#info-content-none").addClass('d-none')
+            $("#info-content").removeClass('d-none')
             $.ajax({
                 type: 'POST',
-                url: "residents_row.php",
+                url: "find_resident.php",
                 data: {
-                    id
+                    name
                 },
                 dataType: "json",
                 success: (res) => {
                     console.log("response: ", res);
-                    var fullname = `${res.firstname} ${res.middlename} ${res.lastname}`
+                    if (res !== null) {
+                        var fullname = `${res.firstname} ${res.middlename} ${res.lastname}`
 
-                    // view Information
-                    var fields = ["fname", "mname", "lname", "gender", "bdate", "bplace", "age", "education", "religion", "nationality", "civil_status", "occupation", "income", "household", "condition", "blood", "relationship"];
-                    var household = `#${res.number} Zone ${res.zone}`;
-                    // var age = res.age > 1 ? `${res.age} yr. old` : `${res.age} yrs. old`
-                    var values = [res.firstname, res.middlename, res.lastname, res.gender, res.birthDate, res.birthPlace, res.age, res.education, res.religion, res.nationality, res.civilStatus, res.occupation, res.income, household, res.healthCondition, res.bloodType, res.relationshipToHead];
-                    $("#view_img").attr("src", res.photo);
-                    for (let x = 0; x < fields.length; x++) {
-                        $(`#view_${fields[x]}`).html(values[x]);
+                        // view Information
+                        var fields = ["fname", "mname", "lname", "gender", "bdate", "bplace", "age", "education", "religion", "nationality", "civil_status", "occupation", "income", "household", "condition", "blood", "relationship"];
+                        var household = `#${res.number} Zone ${res.zone}`;
+                        // var age = res.age > 1 ? `${res.age} yr. old` : `${res.age} yrs. old`
+                        var values = [res.firstname, res.middlename, res.lastname, res.gender, res.birthDate, res.birthPlace, res.age, res.education, res.religion, res.nationality, res.civilStatus, res.occupation, res.income, household, res.healthCondition, res.bloodType, res.relationshipToHead];
+                        $("#view_img").attr("src", res.photo);
+                        for (let x = 0; x < fields.length; x++) {
+                            $(`#view_${fields[x]}`).html(values[x]);
+                        }
+                    }else{
+                        $("#info-content-none").removeClass('d-none')
+                    $("#info-content").addClass('d-none')
                     }
-                    $(".infoModal-title").html(title);
+                },
+                error: function(err) {
+                    console.log('error: ', err)
+                    $("#info-content-none").removeClass('d-none')
+                    $("#info-content").addClass('d-none')
                 }
             })
 

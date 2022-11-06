@@ -12,6 +12,6 @@
         session_start();
         $_SESSION['admin_id'] = $user['id'];
         // header("Location: .php");
-        header("location: household.php");
+        header("location: home.php");
     }
 ?>

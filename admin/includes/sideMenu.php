@@ -89,7 +89,7 @@
                     <i class="bx bxs-note"></i>
                     <span>Memorandum</span>
                 </a>
-            </li> -->
+            </li> 
              <li class="header">Settings</li>
             <li class="nav-item" title="Here you can manage baranggay information." data-toggle="tooltip" data-placement="right">
                 <a href="baranggay.php" class="nav-link text-dark">

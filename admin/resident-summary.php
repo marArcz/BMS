@@ -12,6 +12,8 @@
 </head>
 
 <body class="hold-transition sidebar-mini skin-blue-light">
+    <!-- resident filter -->
+
     <div class="wrapper">
         <?php include 'includes/navbar.php'; ?>
         <?php include 'includes/sideMenu.php'; ?>
@@ -19,11 +21,11 @@
 
             <section class="content-header">
                 <h1 style="font-family:poppins">
-                    Residents
+                    Residents Summary
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home </a> </li>
-                    <li class="active"> Residents</li>
+                    <li class="active"> Resident Summary</li>
                 </ol>
             </section>
             <hr>
@@ -32,21 +34,48 @@
             ?>
             <!-- Main content -->
             <section class="content">
+                <a href="home.php" class="btn btn-sm btn-primary mb-2" type="button"><i class="bx bx-arrow-back"></i></a>
                 <div class="card">
-                    <div class="card-header text">
-                        <?php
-                        $query = run_query("SELECT * FROM household");
-                        $count = $query->num_rows;
-                        ?>
-
-                        <a class="btn btn-primary btn-sm text-white" data-toggle="tooltip" data-placement="left" title="<?php echo $count == 0 ? 'You need to add a household first!' : 'Add new resident'  ?>">
-                            <button type="button" class="btn btn-sm p-0 edit text-white" data-toggle="modal" data-target="#addModal" <?php echo $count == 0 ? 'disabled' : '' ?>>
-                                <i class="bx bx-plus"></i> Add new
-                            </button>
-                        </a>
-                    </div>
-
                     <div class="card-body bg-white">
+                        <?php 
+                            $filter = $_GET['filter'];
+                            if($filter == 'under_aged'){
+                                $msg = "Showing under aged residents";
+                                $query = run_query("SELECT *, residents.id AS rID FROM residents INNER JOIN household ON residents.household = household.id WHERE residents.age < 18");
+                            }
+                            else if($filter == 'legal_aged'){
+                                $msg = "Showing legal aged residents";
+                                $query = run_query("SELECT *, residents.id AS rID FROM residents INNER JOIN household ON residents.household = household.id WHERE residents.age >= 18");
+                            }
+                            else if($filter == 'middle_aged'){
+                                $msg = "Showing middle aged residents";
+                                $query = run_query("SELECT *, residents.id AS rID FROM residents INNER JOIN household ON residents.household = household.id WHERE residents.age >= 40 AND residents.age <= 60");
+
+                            }
+                            else if($filter == 'senior_citizen'){
+                                $query = run_query("SELECT *, residents.id AS rID FROM residents INNER JOIN household ON residents.household = household.id WHERE residents.age > 60");
+                                $msg = "Showing middle aged residents";
+                            }
+                            else if($filter == 'voter'){
+                                $msg = "Showing voting residents";
+                                $query = run_query("SELECT *, residents.id AS rID FROM residents INNER JOIN household ON residents.household = household.id WHERE voter = 1");
+
+                            }
+                            else if($filter == 'non_voter'){
+                                $query = run_query("SELECT *, residents.id AS rID FROM residents INNER JOIN household ON residents.household = household.id WHERE voter = 0");
+                                $msg = "Showing non-voting residents";
+                            }
+                            else if($filter == 'zone'){
+                                $query = run_query("SELECT *, residents.id AS rID FROM residents INNER JOIN household ON residents.household = household.id WHERE household.zone =" . $_GET['zone']);
+                                $msg = "Showing Residents of Zone " . $_GET['zone'];
+                            }
+                        ?>
+                        <div class="alert alert-primary">
+                            <p class="my-0">
+                                <i class="bx bx-info-circle me-1"></i>
+                                <span><?php echo $msg ?></span>
+                            </p>
+                        </div>
                         <div class="table-responsive">
                             <table id="table" class="table table-hover">
                                 <thead class="bg-light">
@@ -63,7 +92,6 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $query = run_query("SELECT *, residents.id AS rID FROM residents INNER JOIN household ON residents.household = household.id");
                                     while ($row = $query->fetch_assoc()) {
                                     ?>
                                         <tr>
@@ -261,25 +289,6 @@
         $(document).on("click", ".delete", function() {
             const id = $(this).attr("data-id");
             getRow(id);
-        })
-
-        $("#bdate").on("change",function(e){
-            let year_today = new Date().getFullYear();
-            // letnew Date($(this).val())
-            let birth_year = new Date($(this).val()).getFullYear();
-
-            let age = year_today - birth_year
-
-            $("#age").val(age)
-        })
-        $("#edit_bdate").on("change",function(e){
-            let year_today = new Date().getFullYear();
-            // letnew Date($(this).val())
-            let birth_year = new Date($(this).val()).getFullYear();
-
-            let age = year_today - birth_year
-
-            $("#edit_age").val(age)
         })
     </script>
 </body>

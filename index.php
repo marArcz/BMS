@@ -135,7 +135,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_type']) {
                 <?php
                 if (isset($_GET['msg'])) {
                 ?>
-                    Swal.fire('Success',"<?php echo $_GET['msg'] ?>", 'success');
+                    Swal.fire('Error',"<?php echo $_GET['msg'] ?>", 'error');
                 <?php
                 }
                 ?>
