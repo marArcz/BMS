@@ -9,7 +9,7 @@
     <?php include "./includes/header.php" ?>
 </head>
 
-<body class="hold-transition sidebar-mini skin-blue-light">
+<body class="hold-transition sidebar-mini theme-light-blue">
     <div class="wrapper">
         <?php include 'includes/user_navbar.php'; ?>
         <?php include 'includes/user_sidemenu.php'; ?>
@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
                                     <h5>Current Baranggay Officials</h5>
-                                    <div class="table-responsive">
+                                    <div class="table-responsive-sm">
                                         <table class="table">
                                             <thead class="bg-dark text-white ">
                                                 <tr>
@@ -99,12 +99,12 @@
                                         }
                                     }
                                     ?>
-                                    <h5 class="text-center text-capitalize text-primary">Resident Record Summary</h5>
-                                    <div class="row justify-content-center">
-                                        <div class="col-sm mb-1">
+                                    <h5 class="text-center text-capitalize text-teal">Summary of Population</h5>
+                                    <div class="row justify-content-center gx-2 gy-2">
+                                        <div class="col-sm">
                                             <!-- population -->
-                                            <div class="card">
-                                                <div class="card-body bg-dark">
+                                            <div class="card ">
+                                                <div class="card-body bg-teal">
                                                     <p class="text-white text-center mb-4">Total Population</p>
                                                     <div class="row justify-content-center">
                                                         <div class="col-sm-3 text-center">
@@ -119,10 +119,10 @@
                                         </div>
                                     </div>
                                     <div class="row no-gutters">
-                                        <div class="col-sm mr-1">
+                                        <div class="col-sm ">
                                             <!-- male -->
                                             <div class="card">
-                                                <div class="card-body bg-dark">
+                                                <div class="card-body bg-success">
                                                     <p class="text-white text-center mb-4">Male</p>
                                                     <div class="row justify-content-center">
                                                         <div class="col-sm-3 text-center">
@@ -135,7 +135,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm">
+                                        <div class="col-sm ">
                                             <!-- female -->
                                             <div class="card">
                                                 <div class="card-body bg-dark">
@@ -152,17 +152,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <h5 class="text-center text-capitalize text-primary mt-4">Blotter Record Summary</h5>
+                                    <h5 class="text-center text-capitalize text-teal mt-4">Blotter Record Summary</h5>
                                     <div class="row mb-1">
                                         <div class="col">
-                                            <div class="card border-primary">
+                                            <div class="card text-light bg-teal">
                                                 <div class="card-body ">
                                                     <p class="text-center mb-4">Recorded</p>
                                                     <div class="row justify-content-center">
                                                         <div class="col-sm-3 text-center">
-                                                            <span class="text-black-50 fa-3x fa fa-book"></span>
+                                                            <span class="text-light fa-3x fa fa-book"></span>
                                                         </div>
-                                                        <div class="col-sm-3 text-center text-black">
+                                                        <div class="col-sm-3 text-center text-light">
                                                             <h2><?php echo $recorded ?></h2>
                                                         </div>
                                                     </div>
@@ -173,14 +173,14 @@
                                     <div class="row no-gutters">
                                         <div class="col-sm mr-1">
                                             <!-- male -->
-                                            <div class="card border-primary">
+                                            <div class="card bg-success text-light">
                                                 <div class="card-body ">
                                                     <p class="text-center mb-4">Solved</p>
                                                     <div class="row justify-content-center">
                                                         <div class="col-sm-3 text-center">
-                                                            <span class="text-black-50 fa-3x fa fa-check-circle-o"></span>
+                                                            <span class="text-light fa-3x fa fa-check-circle-o"></span>
                                                         </div>
-                                                        <div class="col text-center text-black">
+                                                        <div class="col text-center text-light">
                                                             <h2><?php echo $solved ?></h2>
                                                         </div>
                                                     </div>
@@ -189,14 +189,14 @@
                                         </div>
                                         <div class="col-sm">
                                             <!-- female -->
-                                            <div class="card border-primary">
+                                            <div class="card bg-dark text-light">
                                                 <div class="card-body">
                                                     <p class="text-center mb-4">Unsolved</p>
                                                     <div class="row justify-content-center">
                                                         <div class="col-sm-3 text-center">
-                                                            <span class="text-black-50 fa-3x fa fa-close"></span>
+                                                            <span class="text-light fa-3x fa fa-close"></span>
                                                         </div>
-                                                        <div class="col text-center text-black">
+                                                        <div class="col text-center text-light">
                                                             <h2><?php echo $unsolved ?></h2>
                                                         </div>
                                                     </div>
@@ -206,9 +206,8 @@
                                     </div>
                                 </div>
                             </div>
-
-                                <!-- residents records summary -->
-                                <?php
+                            <!-- residents records summary -->
+                            <?php
                             // get the number of under age residents
                             $under_age = run_query("SELECT COUNT(*) FROM residents WHERE age < 18")->fetch_array()[0];
                             // get the number of legal age residents
@@ -220,139 +219,71 @@
                             ?>
                             <div class="mt-5">
 
-                                <?php
-                                // get voters count
-                                $voters_count = run_query("SELECT COUNT(*) FROM residents WHERE voter = 1")->fetch_array()[0];
-                                // get non voters count
-                                $non_voters_count = run_query("SELECT COUNT(*) FROM residents WHERE voter = 0")->fetch_array()[0];
-                                ?>
-                                <div class="card mb-4 border-left border-right-0 border-top-0 border-bottom-0 border-dark ">
-                                    <div class="card-body">
-                                        <p class="mb-2  fw-bold">
-                                            <strong>Voters Summary</strong>
-                                        </p>
-                                        <div class="row">
-                                            <!-- voters -->
-                                            <div class="col-md-5 my-2">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <?php
-                                                        if ($voters_count > 0) {
-                                                        ?>
-                                                            <a class="text-dark" href="user-resident-summary.php?filter=voter">
-                                                                <strong>No. of voters</strong>
-                                                            </a>
-                                                        <?php
-                                                        } else {
-                                                        ?>
-                                                            <p>
-                                                                <strong>No. of voters</strong>
-                                                            </p>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                        <h5 class="fs-5 mt-3 text-primary">
-                                                            <?php echo $voters_count ?>
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- non voters -->
-                                            <div class="col-md-5 my-2">
-                                                <div class="card ">
-                                                    <div class="card-body">
-                                                        <?php
-                                                        if ($non_voters_count > 0) {
-                                                        ?>
-                                                            <a class="text-dark" href="user-resident-summary.php?filter=non_voter">
-                                                                <strong>No. of non-voters</strong>
-                                                            </a>
-                                                        <?php
-                                                        } else {
-                                                        ?>
-                                                            <p>
-                                                                <strong>No. of non-voters</strong>
-                                                            </p>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                        <h5 class="fs-5 mt-3 text-primary">
-                                                            <?php echo $non_voters_count ?>
-                                                        </h5>
-                                                    </div>
-                                                </div>
+                            </div>
+                            <!-- residents -->
+                            <div class="my-2">
+                                <p class="mb-2 fw-bold">
+                                    <strong>Residents Summary</strong>
+                                </p>
+                                <div class="row mt-3 gy-2">
+                                    <!-- under age -->
+                                    <div class="col-md-6 my-2">
+                                        <div class="card bg-teal">
+                                            <div class="card-body">
+                                                <?php
+                                                if ($under_age > 0) {
+                                                ?>
+                                                    <a class=" text-light" href="resident-summary.php?filter=under_aged">
+                                                        <strong>Under age Residents</strong>
+                                                    </a>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <p class="text-light">
+                                                        <strong>Under age Residents</strong>
+                                                    </p>
+                                                <?php
+                                                }
+                                                ?>
+                                                <h5 class="fs-5 mt-3 text-light">
+                                                    <?php echo $under_age ?>
+                                                </h5>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <!-- residents -->
-                            <div class="card border-left border-right-0 border-top-0 border-bottom-0 border-primary ">
-                                <div class="card-body">
-                                    <div class="row resident-summary">
-                                        <div class="col-md">
-                                            <p class="mb-2 fw-bold">
-                                                <strong>Residents Summary</strong>
-                                            </p>
-                                            <div class="row mt-3 gy-2">
-                                                <!-- under age -->
-                                                <div class="col-md-5 my-2">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <?php
-                                                            if ($under_age > 0) {
-                                                            ?>
-                                                                <a class=" text-dark" href="user-resident-summary.php?filter=under_aged">
-                                                                    <strong>Under age</strong>
-                                                                </a>
-                                                            <?php
-                                                            } else {
-                                                            ?>
-                                                                <p>
-                                                                    <strong>Under age</strong>
-                                                                </p>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                            <h5 class="fs-5 mt-3 text-primary">
-                                                                <?php echo $under_age ?>
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- legal age -->
-                                                <div class="col-md-5 my-2">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <?php
-                                                            if ($legal_age > 0) {
-                                                            ?>
-                                                                <a class="text-dark" href="user-resident-summary.php?filter=legal_aged">
-                                                                    <strong>Legal age</strong>
-                                                                </a>
-                                                            <?php
-                                                            } else {
-                                                            ?>
-                                                                <p>
-                                                                    <strong>Legal age</strong>
-                                                                </p>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                            <h5 class="mt-3 fs-5 text-primary">
-                                                                <?php echo $legal_age ?>
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- middle age -->
-                                                <!-- <div class="col-md-5 my-2">
+                                    <!-- legal age -->
+                                    <div class="col-md-6 my-2">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <?php
+                                                if ($legal_age > 0) {
+                                                ?>
+                                                    <a class="text-light" href="resident-summary.php?filter=legal_aged">
+                                                        <strong>Legal age Residents</strong>
+                                                    </a>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <p class="text-light">
+                                                        <strong>Legal age Residents</strong>
+                                                    </p>
+                                                <?php
+                                                }
+                                                ?>
+                                                <h5 class="mt-3 fs-5 text-light">
+                                                    <?php echo $legal_age ?>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- middle age -->
+                                    <!-- <div class="col-md-5 my-2">
                                                     <div class="card">
                                                         <div class="card-body">
                                                             <?php
                                                             if ($middle_age > 0) {
                                                             ?>
-                                                                <a class=" text-dark" href="user-resident-summary.php?filter=middle_aged">
+                                                                <a class=" text-dark" href="resident-summary.php?filter=middle_aged">
                                                                     <strong>Middle aged</strong>
                                                                 </a>
                                                             <?php
@@ -370,78 +301,72 @@
                                                         </div>
                                                     </div>
                                                 </div> -->
-                                                <!-- senior citizen -->
-                                                <div class="col-md-5 my-2">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <?php
-                                                            if ($senior > 0) {
-                                                            ?>
-                                                                <a class="text-dark" href="user-resident-summary.php?filter=senior_citizen">
-                                                                    <strong>Senior Citizen</strong>
-                                                                </a>
-                                                            <?php
-                                                            } else {
-                                                            ?>
-                                                                <p class="">
-                                                                    <strong>Senior Citizen</strong>
-                                                                </p>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                            <h5 class="mt-3 fs-5 text-primary">
-                                                                <?php echo $senior ?>
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    <!-- senior citizen -->
+                                    <div class="col-md-6 my-2">
+                                        <div class="card bg-gray">
+                                            <div class="card-body">
+                                                <?php
+                                                if ($senior > 0) {
+                                                ?>
+                                                    <a class="text-dark" href="resident-summary.php?filter=senior_citizen">
+                                                        <strong>Senior Citizen</strong>
+                                                    </a>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <p class="">
+                                                        <strong>Senior Citizen</strong>
+                                                    </p>
+                                                <?php
+                                                }
+                                                ?>
+                                                <h5 class="mt-3 fs-5 text-dark">
+                                                    <?php echo $senior ?>
+                                                </h5>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card mt-3 border-left   border-right-0  border-top-0 border-bottom-0 border-success">
-                                <div class="card-body">
-                                    <!-- zones -->
-                                    <p class=""><strong>Population Records</strong></p>
-                                    <div class="row">
-                                        <?php
-                                        // get households
-                                        $query = run_query("SELECT * FROM household GROUP BY zone");
-                                        while ($row = $query->fetch_assoc()) {
-                                            $id = $row['id'];
-                                            $resident_count = run_query("SELECT COUNT(*) FROM residents WHERE household = $id")->fetch_array()[0];
+                            <!-- zones -->
+                            <p class="mt-4"><strong>Population Records</strong></p>
+                            <div class="row">
+                                <?php
+                                // get households
+                                $query = run_query("SELECT * FROM household GROUP BY zone");
+                                while ($row = $query->fetch_assoc()) {
+                                    $id = $row['id'];
+                                    $resident_count = run_query("SELECT COUNT(*) FROM residents WHERE household = $id")->fetch_array()[0];
 
-                                        ?>
-                                            <div class="col-md-3">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <?php
-                                                        if ($resident_count > 0) {
-                                                        ?>
-                                                            <a href="user-resident-summary.php?filter=zone&zone=<?php echo $row['zone'] ?>">
-                                                                <strong>Zone <?php echo $row['zone'] ?></strong>
-                                                            </a>
-                                                        <?php
-                                                        } else {
-                                                        ?>
-                                                            <p><strong>Zone <?php echo $row['zone'] ?></strong></p>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                        <p class="mt-3"><strong>
-                                                                <?php echo $resident_count ?>
-                                                            </strong></p>
-                                                    </div>
-                                                </div>
+                                ?>
+                                    <div class="col-md-6">
+                                        <div class="card bg-dark text-light">
+                                            <div class="card-body">
+                                                <?php
+                                                if ($resident_count > 0) {
+                                                ?>
+                                                    <a class="text-light" href="resident-summary.php?filter=zone&zone=<?php echo $row['zone'] ?>">
+                                                        <strong>Zone <?php echo $row['zone'] ?></strong>
+                                                    </a>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <p><strong>Zone <?php echo $row['zone'] ?></strong></p>
+                                                <?php
+                                                }
+                                                ?>
+                                                <p class="mt-3"><strong>
+                                                        <?php echo $resident_count ?>
+                                                    </strong></p>
                                             </div>
-                                        <?php
-                                        }
-                                        ?>
+                                        </div>
                                     </div>
-                                </div>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div> <!-- end of card-body -->
+
                     </div>
                 </section>
             <?php

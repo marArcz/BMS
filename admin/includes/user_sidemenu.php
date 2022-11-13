@@ -1,12 +1,12 @@
 <aside class="main-sidebar" style="overflow-y: hidden; max-height: 100%;">
     <section class="sidebar ">
-        <div class="user-panel align-content-center border-bottom ">
+        <div class="user-panel align-content-center">
             <div class="pull-left image ">
                 <img src="<?php echo $_SESSION['user']['photo'] ?>" alt="account photo" width="30px" height="30px" class="rounded-circle border-light border-left border-top border-bottom border-right">
             </div>
             <div class="pull-left info">
                 <p id="admin-name" class="title text-center fs-5 mt-auto my-1"><?php echo $admin['fullname'] ?></p>
-                <div class="badge bg-primary shadow-sm text-white text-center"><span>User</span></div>
+                <p><small>User</small></p>
             </div>
         </div>
         <ul class="sidebar-menu " data-widget="tree">

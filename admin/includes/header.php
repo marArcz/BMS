@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="..\assets\DataTables\datatables.min.css"> -->
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css" integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css" integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.0/css/AdminLTE.min.css" integrity="sha512-WwxBYWUrN/LPCceidkNpgYFBiIjrickdz+Ts+55PAzTJ9sSP8EVfId6lq0cl3/kSnGECF/7v3p3BnCLkvVhs/w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.0/css/skins/_all-skins.min.css" integrity="sha512-D231SkmJ+61oWzyBS0Htmce/w1NLwUVtMSA05ceaprOG4ZAszxnScjexIQwdAr4bZ4NRNdSHH1qXwu1GwEVnvA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -25,6 +25,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200;300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets//simditor-2.3.28//styles//simditor.css">
 <link rel="stylesheet" href="../assets/css/themes.css">
+
+<link rel="stylesheet" href="../assets/custom.css">
+
 <style>
     .toastjs-container{
         z-index:9999;

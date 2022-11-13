@@ -3,7 +3,7 @@ if (isset($_POST['year'])) {
     require("./includes/conn.php");
     $rows = [];
 
-    $query = prep_stmt("SELECT * FROM blotter_history WHERE date = ");
+    $query = prep_stmt("SELECT * FROM blotter_history WHERE YEAR(date) = ?");
     $year = $_POST['year'];
     $query->bind_param('s', $year);
     $query->execute();

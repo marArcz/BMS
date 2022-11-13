@@ -67,7 +67,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_type']) {
                 <?php
                 }
                 ?>
-                <div class="card bg-white rounded-lg shadow-sm mt-2">
+                <div class="card bg-white rounded-lg shadow mt-2">
                     <div class="card-body">
                         <h5 class="mb-1 text-dark">Baranggay Management System</h5>
                         <p class="text-black-50">Sign in to manage system</p>

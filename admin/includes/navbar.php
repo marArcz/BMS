@@ -22,7 +22,7 @@
                         <img src="<?php echo $admin['photo'] ?>" class="user-image" alt="User Image">
                         <span class="hidden-xs"><?php echo $admin['fullname'] ?></span>
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu border">
                         <!-- User image -->
                         <li class="user-header">
                             <img src="<?php echo $admin['photo'] ?>" class="user-image" alt="User Image">
@@ -33,12 +33,12 @@
                                 <span><small>System Admin</small></span>
                             </p>
                         </li>
-                        <li class="user-footer">
+                        <li class="user-footer bg-primary">
                             <div class="pull-left">
-                                <a href="#profileModal" data-toggle="modal" class="btn btn-default btn-flat" data-id="<?php echo $admin['id'] ?>" id="update_account">Update</a>
+                                <a href="#profileModal" data-toggle="modal" class="btn btn-light" data-id="<?php echo $admin['id'] ?>" id="update_account">Update</a>
                             </div>
                             <div class="pull-right">
-                                <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="logout.php" class="btn btn-light">Sign out</a>
                             </div>
                         </li>
                     </ul>
