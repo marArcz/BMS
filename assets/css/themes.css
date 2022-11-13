@@ -1,0 +1,53 @@
+.theme-light-blue {
+  background: rgb(53, 53, 53) !important;
+}
+.theme-light-blue .main-header {
+  background: rgb(36, 36, 36) !important;
+}
+.theme-light-blue .main-header * {
+  color: white;
+}
+.theme-light-blue .main-header .navbar {
+  background: white !important;
+}
+.theme-light-blue .main-header .navbar * {
+  color: black !important;
+}
+.theme-light-blue aside.main-sidebar {
+  background: #178aa7 !important;
+}
+.theme-light-blue aside.main-sidebar * {
+  color: rgb(255, 255, 255);
+}
+.theme-light-blue aside.main-sidebar ul li.header {
+  background: #178aa7 !important;
+}
+.theme-light-blue aside.main-sidebar ul li.active {
+  background: rgba(39, 39, 39, 0.3) !important;
+}
+.theme-light-blue aside.main-sidebar ul li.active * {
+  color: white;
+}
+
+.theme-blue .main-header * {
+  color: white;
+}
+.theme-blue .main-header .navbar {
+  background: #2684FF !important;
+}
+.theme-blue .main-header .navbar * {
+  color: white !important;
+}
+.theme-blue aside.main-sidebar {
+  background: #272727;
+}
+.theme-blue aside.main-sidebar * {
+  color: rgb(216, 216, 216);
+}
+.theme-blue aside.main-sidebar ul li.header {
+  background: rgb(32, 32, 32) !important;
+}
+.theme-blue aside.main-sidebar ul li.active {
+  background: rgb(50, 50, 50);
+  border-left: 3px solid #2684FF;
+}/*# sourceMappingURL=themes.css.map */

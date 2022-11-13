@@ -212,11 +212,11 @@
                             // get the number of under age residents
                             $under_age = run_query("SELECT COUNT(*) FROM residents WHERE age < 18")->fetch_array()[0];
                             // get the number of legal age residents
-                            $legal_age = run_query("SELECT COUNT(*) FROM residents WHERE age >= 18")->fetch_array()[0];
+                            $legal_age = run_query("SELECT COUNT(*) FROM residents WHERE age >= 18 AND age <= 59")->fetch_array()[0];
                             // get the number of middle aged residents
                             $middle_age = run_query("SELECT COUNT(*) FROM residents WHERE age >= 40 && age <= 60")->fetch_array()[0];
                             // get the number of senior citizens
-                            $senior = run_query("SELECT COUNT(*) FROM residents WHERE age > 60")->fetch_array()[0];
+                            $senior = run_query("SELECT COUNT(*) FROM residents WHERE age >= 60")->fetch_array()[0];
                             ?>
                             <div class="mt-5">
 
@@ -303,13 +303,13 @@
                                                             if ($under_age > 0) {
                                                             ?>
                                                                 <a class=" text-dark" href="user-resident-summary.php?filter=under_aged">
-                                                                    <strong>Under aged</strong>
+                                                                    <strong>Under age</strong>
                                                                 </a>
                                                             <?php
                                                             } else {
                                                             ?>
                                                                 <p>
-                                                                    <strong>Under aged</strong>
+                                                                    <strong>Under age</strong>
                                                                 </p>
                                                             <?php
                                                             }
@@ -328,13 +328,13 @@
                                                             if ($legal_age > 0) {
                                                             ?>
                                                                 <a class="text-dark" href="user-resident-summary.php?filter=legal_aged">
-                                                                    <strong>Legal aged</strong>
+                                                                    <strong>Legal age</strong>
                                                                 </a>
                                                             <?php
                                                             } else {
                                                             ?>
                                                                 <p>
-                                                                    <strong>Legal aged</strong>
+                                                                    <strong>Legal age</strong>
                                                                 </p>
                                                             <?php
                                                             }
@@ -346,7 +346,7 @@
                                                     </div>
                                                 </div>
                                                 <!-- middle age -->
-                                                <div class="col-md-5 my-2">
+                                                <!-- <div class="col-md-5 my-2">
                                                     <div class="card">
                                                         <div class="card-body">
                                                             <?php
@@ -369,7 +369,7 @@
                                                             </h5>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <!-- senior citizen -->
                                                 <div class="col-md-5 my-2">
                                                     <div class="card">

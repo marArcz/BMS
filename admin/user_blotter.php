@@ -78,15 +78,15 @@ include "./includes/user_session.php";
                                             </td>
                                             <td>
                                                 <div class="dropleft show">
-                                                    <a class="btn btn-secondary2 btn-lg dropdown-togglea" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <a class="btn btn-secondary2 btn-lg" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <span class="fa fa-ellipsis-v"></span>
                                                     </a>
 
                                                     <div class="dropdown-menu bg-light shadow" aria-labelledby="dropdownMenuLink">
-                                                        <a class="dropdown-item view-info" data-title="Suspect Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['suspect'] ?>">
+                                                        <a class="dropdown-item view-info" data-id="<?php echo $bRow['id'] ?>" data-type="suspect" data-title="Suspect Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['suspect'] ?>">
                                                             <i class="fa fa-info-circle"></i> Suspect Info
                                                         </a>
-                                                        <a class="dropdown-item view-info" data-title="Complainant Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['complainant'] ?>">
+                                                        <a class="dropdown-item view-info" data-id="<?php echo $bRow['id'] ?>" data-type="complainant" data-title="Complainant Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['complainant'] ?>">
                                                             <i class="fa fa-info-circle"></i> Complainant Info
                                                         </a>
                                                     </div>
@@ -188,6 +188,8 @@ include "./includes/user_session.php";
             })
         })
         $(document).on("click", ".view-info", function() {
+            const type = $(this).attr("data-type");
+            const id = $(this).attr("data-id");
             const name = $(this).attr("data-name");
             console.log('name: ', name)
             var title = $(this).attr("data-title");
@@ -216,9 +218,31 @@ include "./includes/user_session.php";
                         for (let x = 0; x < fields.length; x++) {
                             $(`#view_${fields[x]}`).html(values[x]);
                         }
-                    }else{
+                    } else {
                         $("#info-content-none").removeClass('d-none')
-                    $("#info-content").addClass('d-none')
+
+                        $("#info-content").addClass('d-none')
+                        $.ajax({
+                            url: "blotter_row.php",
+                            method: "post",
+                            data: {
+                                id
+                            },
+                            dataType: "json",
+                            success: function(res) {
+                                if (type == "suspect") {
+                                    $("#res-name").html(res.suspect);
+                                    $("#res-age").html(res.suspect_age);
+                                    $("#res-address").html(res.suspect_address);
+                                    $("#res-phone").html(res.suspect_phone);
+                                } else {
+                                    $("#res-name").html(res.complainant);
+                                    $("#res-age").html(res.complainant_age);
+                                    $("#res-address").html(res.complainant_address);
+                                    $("#res-phone").html(res.complainant_phone);
+                                }
+                            }
+                        })
                     }
                 },
                 error: function(err) {

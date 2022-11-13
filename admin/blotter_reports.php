@@ -12,7 +12,7 @@ include "./includes/session.php";
     <?php include "./includes/header.php" ?>
 </head>
 
-<body class="hold-transition sidebar-mini skin-blue-light">
+<body class="hold-transition sidebar-mini theme-light-blue">
     <div class="wrapper">
         <?php include 'includes/navbar.php'; ?>
         <?php include 'includes/sideMenu.php'; ?>
@@ -180,13 +180,14 @@ include "./includes/session.php";
 
         $(function() {
             $.ajax({
+                url: 'blotter_month_row.php',
                 method: "POST",
-                'url': 'blotter_month_row.php',
                 data: {
                     year: "2021"
                 },
                 dataType: 'json',
                 success: function(data) {
+                    console.log('data response: ', data)
                     var labels = "Jan,Feb,Mar,Apr,May,June,Jul,Aug,Sep,Oct,Nov,Dec".split(",");
                     let chartData = [];
                     for (let x = 0; x < labels.length; x++) {
@@ -231,10 +232,10 @@ include "./includes/session.php";
                             }
                         }
                     })
+
+                    let year = new Date().getFullYear();
+                    changeData(year, updateChart);
                 }
-            }).then(() => {
-                let year = $(this).find(":selected").val();
-                changeData(year, updateChart);
             })
 
         })
@@ -256,15 +257,18 @@ include "./includes/session.php";
         function changeData(year, cb) {
             // number of blottered residents per month;
             $.ajax({
-                async: false,
-                method: "POST",
                 url: "blotter_month_row.php",
+                method: "POST",
                 data: {
                     year
                 },
                 dataType: "json",
                 success: function(res) {
+                    console.log('res: ', res)
                     cb(res);
+                },
+                error: function(err) {
+                    console.log('error: ', err)
                 }
             })
         }

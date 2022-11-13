@@ -25,15 +25,17 @@
         $income = $_POST['income'];
         $household = $_POST['household'];
         $condition = $_POST['condition'];
-        $voter = $_POST['voter'];
+        $voter = 1;
         $blood = $_POST['blood'];
         $relationship = $_POST['relationship'];
-
-        $sql="INSERT INTO residents VALUES(null, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $phone = $_POST['phone'];
+        $mother = $_POST['mother'];
+        $father = $_POST['father'];
+        $sql="INSERT INTO residents VALUES(null, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         
         if($query = prep_stmt($sql)){
-            $query->bind_param("sssssssssssssisssss",
-                $fname,$mname,$lname,$age,$gender,$birthDate, $birthPlace, $condition, $relationship,$blood,$civil, $occupation, $income, $household, $religion,$nationality, $education,$target_file,$voter
+            $query->bind_param("sssssssssssssissssssss",
+                $fname,$mname,$lname,$age,$gender,$birthDate, $birthPlace, $condition, $relationship,$blood,$civil, $occupation, $income, $household, $religion,$nationality, $education,$target_file,$voter,$phone,$mother,$father
             );
             if($query->execute()){
                 LogAction($_SESSION['admin_id'],"Added a new Resident");

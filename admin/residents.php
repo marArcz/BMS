@@ -11,7 +11,7 @@
 
 </head>
 
-<body class="hold-transition sidebar-mini skin-blue-light">
+<body class="hold-transition sidebar-mini theme-light-blue">
     <div class="wrapper">
         <?php include 'includes/navbar.php'; ?>
         <?php include 'includes/sideMenu.php'; ?>
@@ -194,6 +194,8 @@
                 },
                 dataType: "json",
                 success: (res) => {
+                    $("#pwd_condition").removeAttr("checked")
+                    $("#normal_condition").removeAttr("checked")
                     console.log("response: ", res);
                     var fullname = `${res.firstname} ${res.middlename} ${res.lastname}`
                     $("#edit_fname").val(res.firstname);
@@ -222,7 +224,7 @@
                         if (fields[x] == "education" || fields[x] == "civil_status" || fields[x] == "relationship" || fields[x] == "blood") {
                             $(`#edit_${fields[x]}`).html(values[x]).val(values[x]);
                         } else if (fields[x] == "condition") {
-                            if (res.condition == "PWD") {
+                            if (res.healthCondition == "PWD") {
                                 $("#pwd_condition").attr("checked", true);
                             } else {
                                 $("#normal_condition").attr("checked", true);
@@ -248,6 +250,9 @@
                     $(".b_form #nationality").html(res.nationality);
                     $(".b_form #street").html(`${res.number} Zone ${res.zone}`);
 
+                    $("#view_phone").html(res.phone)
+                    $("#view_mother").html(res.mother)
+                    $("#view_father").html(res.father)
                 }
 
 

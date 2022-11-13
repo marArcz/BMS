@@ -18,7 +18,7 @@
         $income = $_POST['income'];
         $household = $_POST['household'];
         $condition = $_POST['condition'];
-        $voter = $_POST['voter'];
+        $voter = 1;
         $blood = $_POST['blood'];
         $relationship = $_POST['relationship'];
         $id = $_POST['id'];
@@ -28,7 +28,7 @@
         ";
         
         if($query = prep_stmt($sql)){
-            $query->bind_param("sssisssssssssssssi",
+            $query->bind_param("sssissssssssssssssi",
                 $fname,$mname,$lname,$age,$gender,$birthDate, $birthPlace, $condition, $relationship,$blood,$civil, $occupation, $income, $household, $religion,$nationality, $education,$voter,$id
             );
             if($query->execute()){

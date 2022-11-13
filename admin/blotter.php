@@ -18,7 +18,7 @@ include "./includes/session.php";
     </style>
 </head>
 
-<body class="hold-transition sidebar-mini skin-blue-light">
+<body class="hold-transition sidebar-mini theme-light-blue">
     <div class="wrapper">
         <?php include 'includes/navbar.php'; ?>
         <?php include 'includes/sideMenu.php'; ?>
@@ -101,10 +101,10 @@ include "./includes/session.php";
                                                     <a class="dropdown-item edit" href="#deleteModal" data-toggle="modal" data-id="<?php echo $bRow['id'] ?>">
                                                         <i class="fa fa-trash"></i> Delete
                                                     </a>
-                                                    <a class="dropdown-item view-info" data-title="Suspect Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['suspect'] ?>">
+                                                    <a class="dropdown-item view-info" data-type="suspect" data-id="<?php echo $bRow['id'] ?>" data-title="Suspect's Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['suspect'] ?>">
                                                         <i class="fa fa-info-circle"></i> Suspect Info
                                                     </a>
-                                                    <a class="dropdown-item view-info" data-title="Complainant Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['complainant'] ?>">
+                                                    <a class="dropdown-item view-info" data-type="complainant" data-id="<?php echo $bRow['id'] ?>" data-title="Complainant Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['complainant'] ?>">
                                                         <i class="fa fa-info-circle"></i> Complainant Info
                                                     </a>
                                                 </div>
@@ -169,6 +169,12 @@ include "./includes/session.php";
                     $("#view_reason")[0].innerText = res.reason
 
                     $("#complainant-box").val(complainant)
+                    $("#complainant_age").val(res.complainant_age)
+                    $("#complainant_address").val(res.complainant_address)
+                    $("#complainant_phone").val(res.complainant_phone)
+                    $("#suspect_age").val(res.suspect_age)
+                    $("#suspect_address").val(res.suspect_address)
+                    $("#suspect_phone").val(res.suspect_phone)
                     $("#suspect-box").val(suspect)
                     $("#edit_reason").val(res.reason);
                     $("#edit_date").val(res.date);
@@ -207,6 +213,8 @@ include "./includes/session.php";
             })
         })
         $(document).on("click", ".view-info", function() {
+            const type = $(this).attr("data-type");
+            const id = $(this).attr("data-id");
             const name = $(this).attr("data-name");
             console.log('name: ', name)
             var title = $(this).attr("data-title");
@@ -237,6 +245,26 @@ include "./includes/session.php";
                         }
                     }else{
                         $("#info-content-none").removeClass('d-none')
+
+                        $.ajax({
+                            url:"blotter_row.php",
+                            method:"post",
+                            data:{id},
+                            dataType:"json",
+                            success:function(res){
+                                if(type == "suspect"){
+                                    $("#res-name").html(res.suspect);
+                                    $("#res-age").html(res.suspect_age);
+                                    $("#res-address").html(res.suspect_address);
+                                    $("#res-phone").html(res.suspect_phone);
+                                }else{
+                                    $("#res-name").html(res.complainant);
+                                    $("#res-age").html(res.complainant_age);
+                                    $("#res-address").html(res.complainant_address);
+                                    $("#res-phone").html(res.complainant_phone);
+                                }
+                            }
+                        })
                     $("#info-content").addClass('d-none')
                     }
                 },

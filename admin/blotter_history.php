@@ -12,7 +12,7 @@ include "./includes/session.php";
     <?php include "./includes/header.php" ?>
 </head>
 
-<body class="hold-transition sidebar-mini skin-blue-light">
+<body class="hold-transition sidebar-mini theme-light-blue">
     <div class="wrapper">
         <?php include 'includes/navbar.php'; ?>
         <?php include 'includes/sideMenu.php'; ?>

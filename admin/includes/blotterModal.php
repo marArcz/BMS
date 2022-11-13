@@ -11,9 +11,12 @@
             <div class="modal-body ">
                 <form action="blotter_add.php" method="POST">
                     <div class="form-group mb-3">
+                        <p class="form-text flex-1 fw-bold">
+                            <strong>Complainant Information</strong>
+                        </p>
                         <div class="row mb-2">
                             <div class="col-sm-4">
-                                <label for="complainant">Complainant: </label>
+                                <label for="complainant">Name: </label>
                             </div>
                             <div class="col">
                                 <input type="text" name="complainant" class="form-control text-capitalize" list="complainant-list">
@@ -29,10 +32,38 @@
                                 </datalist>
                             </div>
                         </div>
-                        <!-- suspect -->
                         <div class="row mb-2">
                             <div class="col-sm-4">
-                                <label for="suspect">Person to complain: </label>
+                                <label for="">Age: </label>
+                            </div>
+                            <div class="col">
+                                <input required type="number" class="form-control" name="complainant_age">
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <label for="">Phone: </label>
+                            </div>
+                            <div class="col">
+                                <input required type="number" class="form-control" name="complainant_phone">
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <label for="">Address: </label>
+                            </div>
+                            <div class="col">
+                                <input required type="text" class="form-control" name="complainant_address">
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- suspect -->
+                        <p class="form-text">
+                            <strong>Suspect Information</strong>
+                        </p>
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <label for="suspect">Name: </label>
                             </div>
                             <div class="col">
                                 <input type="text" name="suspect" class="form-control text-capitalize" list="suspect-list">
@@ -48,6 +79,31 @@
                                 </datalist>
                             </div>
                         </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <label for="">Age: </label>
+                            </div>
+                            <div class="col">
+                                <input required type="number" class="form-control" name="suspect_age">
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <label for="">Phone: </label>
+                            </div>
+                            <div class="col">
+                                <input required type="number" class="form-control" name="suspect_phone">
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <label for="">Address: </label>
+                            </div>
+                            <div class="col">
+                                <input required type="text" class="form-control" name="suspect_address">
+                            </div>
+                        </div>
+                        <hr>
                         <!-- date -->
                         <div class="row mb-2">
                             <div class="col-sm-4">
@@ -111,9 +167,12 @@
                 <form action="blotter_edit.php" method="POST">
                     <input required type="hidden" name="id" class="id">
                     <div class="form-group mb-3">
+                        <p class="form-text">
+                            <strong>Complainant Information</strong>
+                        </p>
                         <div class="row mb-2">
                             <div class="col-sm-4">
-                                <label for="complainant">Complainant: </label>
+                                <label for="complainant">Name: </label>
                             </div>
                             <div class="col">
                                 <input type="text" name="complainant" id="complainant-box" class="form-control" list="complainant-list">
@@ -129,10 +188,38 @@
                                 </datalist>
                             </div>
                         </div>
-                        <!-- suspect -->
                         <div class="row mb-2">
                             <div class="col-sm-4">
-                                <label for="suspect">Person to complaint: </label>
+                                <label for="">Age: </label>
+                            </div>
+                            <div class="col">
+                                <input required type="number" id="complainant_age" class="form-control" name="complainant_age">
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <label for="">Phone: </label>
+                            </div>
+                            <div class="col">
+                                <input required type="number" id="complainant_phone" class="form-control" name="complainant_phone">
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <label for="">Address: </label>
+                            </div>
+                            <div class="col">
+                                <input required type="text" id="complainant_address" class="form-control" name="complainant_address">
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- suspect -->
+                        <p class="form-text">
+                            <strong>Suspect Information</strong>
+                        </p>
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <label for="suspect">Name:</label>
                             </div>
                             <div class="col">
                                 <input type="text" name="suspect" id="suspect-box" class="form-control" list="complainant-list">
@@ -148,6 +235,31 @@
                                 </datalist>
                             </div>
                         </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <label for="">Age: </label>
+                            </div>
+                            <div class="col">
+                                <input required type="number" id="suspect_age" class="form-control" name="suspect_age">
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <label for="">Phone: </label>
+                            </div>
+                            <div class="col">
+                                <input required type="number" id="suspect_phone" class="form-control" name="suspect_phone">
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <label for="">Address: </label>
+                            </div>
+                            <div class="col">
+                                <input required type="text" id="suspect_address" class="form-control" name="suspect_address">
+                            </div>
+                        </div>
+                        <hr>
                         <!-- date -->
                         <div class="row mb-2">
                             <div class="col-sm-4">
@@ -216,7 +328,7 @@
                         <input required type="hidden" name="id" class="id">
                         <div class="row">
                             <div class="col-sm-4">
-                                <h5 class="text-black">Complainant: </h5>
+                                <p class="text-black">Complainant: </p>
                             </div>
                             <div class="col">
                                 <p class="text-center" id="del_complainant"></p>
@@ -224,7 +336,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <h5 class="text-black">Suspect: </h5>
+                                <p class="text-black">Suspect: </p>
                             </div>
                             <div class="col">
                                 <p class="text-center" id="del_suspect"></p>
@@ -391,12 +503,18 @@
                 </div>
 
                 <div id="info-content-none" class="d-none">
-                    <p class="mt-3 text-center">
-                        No record found.
-                    </p>
-                    <p class="mt-2 text-center">
+                    <div class="mb-4">
+                        <div class="container">
+                            <p>Name: <span id="res-name" class="fw-bold">John Doe</span></p>
+                            <p>Age: <span id="res-age" class="fw-bold">20</span></p>
+                            <p>Contact No: <span id="res-phone" class="fw-bold">0969121277</span></p>
+                            <p>Address: <span id="res-address" class="fw-bold">Baranggay Simpatuyo </span></p>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-primary py-2 my-0">
                         This person is not a resident of our baranggay.
-                    </p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -223,6 +223,9 @@
                     $(".b_form #nationality").html(res.nationality);
                     $(".b_form #street").html(`${res.number} Zone ${res.zone}`);
 
+                    $("#view_phone").html(res.phone)
+                    $("#view_mother").html(res.mother)
+                    $("#view_father").html(res.father)
                 }
 
 

@@ -45,7 +45,7 @@
                             }
                             else if($filter == 'legal_aged'){
                                 $msg = "Showing legal aged residents";
-                                $query = run_query("SELECT *, residents.id AS rID FROM residents INNER JOIN household ON residents.household = household.id WHERE residents.age >= 18");
+                                $query = run_query("SELECT *, residents.id AS rID FROM residents INNER JOIN household ON residents.household = household.id WHERE residents.age >= 18 AND residents.age <= 59");
                             }
                             else if($filter == 'middle_aged'){
                                 $msg = "Showing middle aged residents";
@@ -53,7 +53,7 @@
 
                             }
                             else if($filter == 'senior_citizen'){
-                                $query = run_query("SELECT *, residents.id AS rID FROM residents INNER JOIN household ON residents.household = household.id WHERE residents.age > 60");
+                                $query = run_query("SELECT *, residents.id AS rID FROM residents INNER JOIN household ON residents.household = household.id WHERE residents.age >= 60");
                                 $msg = "Showing middle aged residents";
                             }
                             else if($filter == 'voter'){

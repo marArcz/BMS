@@ -3,6 +3,18 @@
   src: url("../../../assets/Poppins/Poppins-Regular.ttf");
   font-family: poppins;
 }
+.bg-poppy {
+  background: #FF5630 !important;
+}
+
+.bg-primary {
+  background: #0052CC;
+}
+
+.bg-success {
+  background: #36B37E !important;
+}
+
 * {
   font-family: "Barlow";
 }
@@ -82,11 +94,24 @@ body .content-wrapper {
   overflow-y: hidden;
   max-height: 100vh;
   padding-bottom: 200px;
+  /* width */
 }
 .main-sidebar:hover {
   overflow-y: scroll;
   box-shadow: 3px 3px 1px solid grey;
 }
+.main-sidebar::-webkit-scrollbar {
+  width: 2px;
+}
+
+.bg-teal {
+  background: #178aa7 !important;
+}
+
+.text-teal {
+  color: #178aa7 !important;
+}
+
 @media screen and (max-height: 750px) {
   body {
     max-height: unset !important;

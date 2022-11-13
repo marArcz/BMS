@@ -122,6 +122,21 @@
                         </div>
                         <div class="row mb-2">
                             <div class="col-md">
+                                <label for="">Contact No:</label>
+                                <input required type="text" class="form-control" name="phone">
+                            </div>
+                            <div class="col-md">
+                                <label for="occupation">Mother:</label>
+                                <input required type="text" class="form-control" name="mother" id="mother">
+                            </div>
+                            <div class="col-md">
+                                <label for="occupation">Father:</label>
+                                <input required type="text" class="form-control" name="father" id="father">
+                            </div>
+                            
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md">
                                 <label for="">Health Condition:</label>
                                 <div class="row">
                                     <div class="col">
@@ -131,19 +146,6 @@
                                     <div class="col">
                                         <label for="">PWD</label>
                                         <input required type="radio" class="" value="PWD" name="condition" id="condition2">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md">
-                                <label for="">Registered Voter:</label>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="voter-option-1">Yes</label>
-                                        <input required type="radio" class="" value="1" name="voter" id="voter-option-1">
-                                    </div>
-                                    <div class="col">
-                                        <label for="voter-option-2">No</label>
-                                        <input required type="radio" class="" value="0" name="voter" id="voter-option-2">
                                     </div>
                                 </div>
                             </div>
@@ -297,6 +299,27 @@
                                 <p id="view_household"></p>
                             </div>
                         </div>
+
+                        <div class="row mb-2">
+                            <div class="col-md">
+                                <p class="text-black-50">
+                                    <small>Contact No.</small>
+                                </p>
+                                <p id="view_phone"></p>
+                            </div>
+                            <div class="col-md">
+                                <p class="text-black-50">
+                                    <small>Mother</small>
+                                </p>
+                                <p id="view_mother"></p>
+                            </div>
+                            <div class="col-md">
+                                <p class="text-black-50">
+                                    <small>Father</small>
+                                </p>
+                                <p id="view_father"></p>
+                            </div>
+                        </div>
                         <div class="row mb-2">
                             <div class="col-md">
                                 <p class="text-black-50">
@@ -304,12 +327,12 @@
                                 </p>
                                 <p id="view_condition"></p>
                             </div>
-                            <div class="col-md">
+                            <!-- <div class="col-md">
                                 <p class="text-black-50">
                                     <small>Registered Voter</small>
                                 </p>
                                 <p id="view_voter"></p>
-                            </div>
+                            </div> -->
                             <div class="col-md">
                                 <p class="text-black-50">
                                     <small>Blood Type</small>
@@ -469,7 +492,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md">
+                            <!-- <div class="col-md">
                                 <label for="">Registered Voter:</label>
                                 <div class="row">
                                     <div class="col">
@@ -481,7 +504,7 @@
                                         <input required type="radio" class="" value="0" name="voter" id="voter-option-no">
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md">
                                 <label for="blood">Blood Type:</label>
                                 <select name="blood" id="blood" class="form-control">

@@ -1,13 +1,14 @@
-<header class="main-header">
+<header class="main-header ">
     <!-- Logo -->
-    <a href="#" class="logo bg-light text-primary">
+    <a href="#" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span style="font-size:14px" class="logo-mini"><b>B</b>MS</span>
         <!-- logo for regular state and mobile devices -->
         <span style="font-size:12px" class="logo-lg">Baranggay Information System</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top py-0 " style="background:#4099ff">
+    <nav class="navbar navbar-static-top py-0 border" >
+    <!-- style="background:#4099ff" -->
         <!-- Sidebar toggle button-->
         <a href="#" class="px-3 text-white border-0" data-toggle="push-menu" role="button">
             <i class="fa fa-navicon"></i>

@@ -4,33 +4,57 @@
         require("./includes/conn.php");
 
         $complainant = $_POST['complainant'];
+        $complainant_age = $_POST['complainant_age'];
+        $complainant_address = $_POST['complainant_address'];
+        $complainant_phone = $_POST['complainant_phone'];
         $suspect = $_POST['suspect'];
+        $suspect_age = $_POST['suspect_age'];
+        $suspect_address = $_POST['suspect_address'];
+        $suspect_phone = $_POST['suspect_phone'];
         $reason = $_POST['reason'];
         $date =$_POST['date'];
         $time = $_POST['time'];
         $action = $_POST['action'];
         $status=0;
-        $sql="INSERT INTO blotter VALUES(null,?,?,?,?,?,?,?)";
+        $sql="INSERT INTO blotter(complainant,complainant_age,complainant_address,complainant_phone, suspect,suspect_age,suspect_address,suspect_phone,reason,action,date,time,status) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         
         if($query = prep_stmt($sql)){
             $query->bind_param(
-                "ssssssi",
-                $complainant,$suspect,$reason,$action,$date,$time,$status
+                "ssssssssssssi",
+                $complainant,
+                $complainant_age,
+                $complainant_address,
+                $complainant_phone,
+                $suspect,
+                $suspect_age,
+                $suspect_address,
+                $suspect_phone,
+                $reason,
+                $action,
+                $date,
+                $time,
+                $status
             );
             if($query->execute()){
-                $cquery = run_query("SELECT * FROM residents WHERE id='$complainant'");
-                $c = $cquery->fetch_assoc();
-                $c = $c['firstname'].' '.$c['lastname'];
-                $squery = run_query("SELECT * FROM residents WHERE id='$suspect'");
-                if($squery->num_rows > 0){
-                    $s = $squery->fetch_assoc();
-                    $age = $s['age'];
-                    $s = $s['firstname'].' '.$s['lastname'];
-                    
-                    $q = prep_stmt("INSERT INTO blotter_history VALUES(NULL,?,?,?,?,?,?)");
-                    $q->bind_param('ssssss',$c,$s,$age,$reason,$date,$time);
-                    $q->execute();
-                }
+                $q = prep_stmt("INSERT INTO blotter_history(complainant,complainant_age,complainant_address,complainant_phone, suspect,suspect_age,suspect_address,suspect_phone,reason,action,date,time,status) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                $q->bind_param(
+                    "ssssssssssssi",
+                    $complainant,
+                    $complainant_age,
+                    $complainant_address,
+                    $complainant_phone,
+                    $suspect,
+                    $suspect_age,
+                    $suspect_address,
+                    $suspect_phone,
+                    $reason,
+                    $action,
+                    $date,
+                    $time,
+                    $status
+                );
+                $q->execute();
+                
                 LogAction($_SESSION['admin_id'],"Added a new blotter record");
                 $_SESSION['success'] = "Blotter record was added successfully";
             }
