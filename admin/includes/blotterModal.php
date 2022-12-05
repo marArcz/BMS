@@ -521,6 +521,198 @@
     </div>
 </div>
 
+
+<!-- suspects modal -->
+<div class="modal fade" id="suspects-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title infoModal-title" id="info-title">Suspects</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md">
+                        <p class="my-1">
+                            <span>Suspects</span>
+                        </p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item text-secondary">
+                                
+                            </li>
+                            <li class="list-group-item text-secondary">
+                                
+                            </li>
+                            <li class="list-group-item text-secondary">
+                                
+                            </li>
+                            <li class="list-group-item text-secondary">
+                                
+                            </li>
+                            <li class="list-group-item text-secondary">
+                                
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9">
+                        <div id="info-content">
+                            <!-- photo preview -->
+                            <p class="form-text fw-bold">Suspect Information</p>
+                            <div class="form-group mb-3 text-dark">
+                                <div class="row mb-2 align-items-baseline">
+                                    <div class="col-md-2 text-center position-relative">
+                                        <img src="uploads/profile.jpg" alt="" class="img-fluid img_preview" id="view_img">
+                                    </div>
+
+                                    <div class="col-sm-2 align-self-baseline">
+                                        <p class="text-black-50">
+                                            <small>Lastname</small>
+                                        </p>
+                                        <p id="view_lname"></p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <p class="text-black-50">
+                                            <small>Firstname</small>
+                                        </p>
+                                        <p id="view_fname"></p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <p class="text-black-50">
+                                            <small>Middlename</small>
+                                        </p>
+                                        <p id="view_mname"></p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <p class="text-black-50">
+                                            <small>Gender</small>
+                                        </p>
+                                        <p id="view_gender"></p>
+                                    </div>
+                                </div>
+                                <!-- primary info -->
+                                <hr>
+                                <div class="row mb-2">
+                                    <div class="col-md">
+                                        <p class="text-black-50">
+                                            <small>Birth Date</small>
+                                        </p>
+                                        <p id="view_bdate"></p>
+                                    </div>
+                                    <div class="col-md">
+                                        <p class="text-black-50">
+                                            <small>Birth Place</small>
+                                        </p>
+                                        <p id="view_bplace"></p>
+                                    </div>
+                                    <div class="col-md">
+                                        <p class="text-black-50">
+                                            <small>Age</small>
+                                        </p>
+                                        <p id="view_age"></p>
+                                    </div>
+                                    <div class="col-md">
+                                        <p class="text-black-50">
+                                            <small>Education</small>
+                                        </p>
+                                        <p id="view_education"></p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+
+                                    <div class="col-md">
+                                        <p class="text-black-50">
+                                            <small>Religion</small>
+                                        </p>
+                                        <p id="view_religion"></p>
+                                    </div>
+                                    <div class="col-md">
+                                        <p class="text-black-50">
+                                            <small>Nationality</small>
+                                        </p>
+                                        <p id="view_nationality"></p>
+                                    </div>
+                                    <div class="col-md">
+                                        <p class="text-black-50">
+                                            <small>Civil Status</small>
+                                        </p>
+                                        <p id="view_civil_status"></p>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md">
+                                        <p class="text-black-50">
+                                            <small>Occupation</small>
+                                        </p>
+                                        <p id="view_occupation"></p>
+                                    </div>
+                                    <div class="col-md">
+                                        <p class="text-black-50">
+                                            <small>Monthly Income</small>
+                                        </p>
+                                        <p id="view_income"></p>
+                                    </div>
+                                    <div class="col-md">
+                                        <p class="text-black-50">
+                                            <small>Household</small>
+                                        </p>
+                                        <p id="view_household"></p>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md">
+                                        <p class="text-black-50">
+                                            <small>Health condition</small>
+                                        </p>
+                                        <p id="view_condition"></p>
+                                    </div>
+                                    <div class="col-md">
+                                        <p class="text-black-50">
+                                            <small>Blood Type</small>
+                                        </p>
+                                        <p id="view_blood"></p>
+                                    </div>
+                                    <div class="col-md">
+                                        <p class="text-black-50">
+                                            <small>Relationship to head</small>
+                                        </p>
+                                        <p id="view_relationship"></p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="text-right">
+                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" name="add" class="btn btn-primary">Add</button> -->
+                                <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">DELETE</button> -->
+                            </div>
+
+                        </div>
+
+                        <div id="info-content-none" class="d-none">
+                            <div class="mb-4">
+                                <div class="container">
+                                    <p>Name: <span id="res-name" class="fw-bold">John Doe</span></p>
+                                    <p>Age: <span id="res-age" class="fw-bold">20</span></p>
+                                    <p>Contact No: <span id="res-phone" class="fw-bold">0969121277</span></p>
+                                    <p>Address: <span id="res-address" class="fw-bold">Baranggay Simpatuyo </span></p>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-primary py-2 my-0">
+                                This person is not a resident of our baranggay.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- reason modal -->
 <div class="modal fade" id="reasonModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

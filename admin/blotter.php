@@ -41,7 +41,7 @@ include "./includes/session.php";
             <section class="content">
                 <div class="card">
                     <div class="card-header">
-                        <button data-target="#addModal" data-toggle="modal" class="btn btn-primary btn-sm btn-rounded"><span class="bx bx-plus"></span> Add new</button>
+                        <a href="add-blotter-page.php" class="btn btn-primary btn-sm btn-rounded"><span class="bx bx-plus"></span> Add new</a>
                     </div>
                 </div>
                 <div class="card-body bg-white">
@@ -64,11 +64,27 @@ include "./includes/session.php";
                                 <?php
                                 $query = run_query("SELECT * FROM blotter ORDER BY status asc, id desc");
                                 while ($bRow = $query->fetch_assoc()) {
-
+                                    // get suspects
+                                    $blotter_id = $bRow['id'];
+                                    $get_suspects = run_query("SELECT * FROM suspect WHERE suspect_group IN (SELECT id FROM suspect_group WHERE blotter_id = $blotter_id)");
+                                    $group_id = run_query("SELECT id FROM suspect_group WHERE blotter_id=" . $bRow['id'])->fetch_array()[0];
                                 ?>
                                     <tr>
                                         <td><?php echo $bRow['complainant'] ?></td>
-                                        <td><?php echo $bRow['suspect'] ?></td>
+                                        <td>
+                                            <?php
+                                            if ($get_suspects->num_rows > 1) {
+                                                // $suspect = $get_suspects->fetch_assoc();
+                                            ?>
+                                                <?php echo $get_suspects->num_rows ?> suspects
+                                            <?php
+                                            } else {
+                                                $suspect = $get_suspects->fetch_assoc();
+
+                                                echo $suspect['name'];
+                                            }
+                                            ?>
+                                        </td>
                                         <td>
                                             <button data-target="#reasonModal" data-toggle="modal" data-id="<?php echo $bRow['id'] ?>" class="edit btn btn-dark btn-sm"><span class="fa fa-eye"></span> View</button>
                                         </td>
@@ -95,14 +111,29 @@ include "./includes/session.php";
                                                 </a>
 
                                                 <div class="dropdown-menu bg-light shadow" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item edit" href="#editModal" data-toggle="modal" data-id="<?php echo $bRow['id'] ?>">
+                                                    <a class="dropdown-item" href="edit-blotter-page.php?id=<?php echo $bRow['id'] ?>">
                                                         <i class="fa fa-edit"></i> Edit
                                                     </a>
                                                     <a class="dropdown-item edit" href="#deleteModal" data-toggle="modal" data-id="<?php echo $bRow['id'] ?>">
                                                         <i class="fa fa-trash"></i> Delete
                                                     </a>
-                                                    <a class="dropdown-item view-info" data-type="suspect" data-id="<?php echo $bRow['id'] ?>" data-title="Suspect's Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['suspect'] ?>">
-                                                        <i class="fa fa-info-circle"></i> Suspect Info
+                                                    <!-- <?php
+                                                    if ($get_suspects->num_rows == 1) {
+                                                    ?>
+                                                        <a class="dropdown-item view-info" data-type="suspect" data-id="<?php echo $suspect['id'] ?>" data-title="Suspect' Information" href="#infoModal" data-toggle="modal">
+                                                            <i class="fa fa-info-circle"></i> Suspect Info
+                                                        </a>
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <a class="dropdown-item view-suspects" data-id="<?php echo $group_id ?>" data-title="Suspect' Information" href="#suspects-modal" data-toggle="modal">
+                                                            <i class="fa fa-info-circle"></i> View Suspects
+                                                        </a>
+                                                    <?php
+                                                    }
+                                                    ?> -->
+                                                    <a href="view-blotter.php?id=<?php echo $bRow['id'] ?>" class=" dropdown-item" data-id="<?php echo $group_id ?>">
+                                                    <i class='bx bx-fullscreen'></i> View
                                                     </a>
                                                     <a class="dropdown-item view-info" data-type="complainant" data-id="<?php echo $bRow['id'] ?>" data-title="Complainant Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['complainant'] ?>">
                                                         <i class="fa fa-info-circle"></i> Complainant Info
@@ -243,21 +274,23 @@ include "./includes/session.php";
                         for (let x = 0; x < fields.length; x++) {
                             $(`#view_${fields[x]}`).html(values[x]);
                         }
-                    }else{
+                    } else {
                         $("#info-content-none").removeClass('d-none')
 
                         $.ajax({
-                            url:"blotter_row.php",
-                            method:"post",
-                            data:{id},
-                            dataType:"json",
-                            success:function(res){
-                                if(type == "suspect"){
+                            url: "blotter_row.php",
+                            method: "post",
+                            data: {
+                                id
+                            },
+                            dataType: "json",
+                            success: function(res) {
+                                if (type == "suspect") {
                                     $("#res-name").html(res.suspect);
                                     $("#res-age").html(res.suspect_age);
                                     $("#res-address").html(res.suspect_address);
                                     $("#res-phone").html(res.suspect_phone);
-                                }else{
+                                } else {
                                     $("#res-name").html(res.complainant);
                                     $("#res-age").html(res.complainant_age);
                                     $("#res-address").html(res.complainant_address);
@@ -265,7 +298,7 @@ include "./includes/session.php";
                                 }
                             }
                         })
-                    $("#info-content").addClass('d-none')
+                        $("#info-content").addClass('d-none')
                     }
                 },
                 error: function(err) {
