@@ -45,7 +45,12 @@ include "./includes/session.php";
                 <div class="card">
                     <div class="card-body bg-white">
                         <!-- complainant form -->
-                        <form action="blotter_add.php" class="complainant-form" method="POST">
+                        <form action="blotter_edit.php" class="complainant-form" method="POST">
+                            <?php
+                            $group_id = run_query("SELECT id FROM suspect_group WHERE blotter_id = " . $_GET['id'])->fetch_array()[0];
+                            ?>
+                            <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+                            <input type="hidden" name="group_id" value="<?php echo $group_id ?>">
                             <div class="form-group mb-3">
                                 <div class="card">
                                     <div class="card-body">
@@ -108,16 +113,18 @@ include "./includes/session.php";
                                 </div>
                                 <div id="suspect-form-container">
 
-                                    <!-- suspect -->
+                                    <p class="form-text">
+                                        <strong>Suspect Information</strong>
+                                    </p> <!-- suspect -->
                                     <?php
                                     $query = run_query("SELECT * FROM suspect WHERE suspect_group IN (SELECT id FROM suspect_group WHERE blotter_id = $blotter_id)");
-                                    echo 'suspects: ' . $query->num_rows;
+                                    $x=1;
                                     while ($row = $query->fetch_assoc()) {
                                     ?>
-                                        <div class="card">
+                                        <div class="card mb-3">
                                             <div class="card-body">
                                                 <p class="form-text">
-                                                    <strong>Suspect Information</strong>
+                                                    <strong>Suspect #<?php echo $x++ ?></strong>
                                                 </p>
                                                 <div class="row mb-2">
                                                     <div class="col-sm-4">
@@ -127,10 +134,10 @@ include "./includes/session.php";
                                                         <input type="text" name="suspect[]" value="<?php echo $row['name'] ?>" required class="form-control text-capitalize" list="suspect-list">
                                                         <datalist id="suspect-list">
                                                             <?php
-                                                            $query = run_query("SELECT * FROM residents");
-                                                            while ($row = $query->fetch_assoc()) {
+                                                            $get_residents = run_query("SELECT * FROM residents");
+                                                            while ($resident = $get_residents->fetch_assoc()) {
                                                             ?>
-                                                                <option value="<?php echo $row['firstname'] . ' ' . $row['lastname'] ?>"></option>
+                                                                <option value="<?php echo $resident['firstname'] . ' ' . $resident['lastname'] ?>"></option>
                                                             <?php
                                                             }
                                                             ?>
@@ -142,7 +149,7 @@ include "./includes/session.php";
                                                         <label for="">Age: </label>
                                                     </div>
                                                     <div class="col">
-                                                        <input required type="number" class="form-control" name="suspect_age[]">
+                                                        <input required value="<?php echo $row['age'] ?>" type="number" class="form-control" name="suspect_age[]">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-2">
@@ -150,7 +157,7 @@ include "./includes/session.php";
                                                         <label for="">Phone: </label>
                                                     </div>
                                                     <div class="col">
-                                                        <input required type="number" class="form-control" name="suspect_phone[]">
+                                                        <input required type="number" value="<?php echo $row['phone'] ?>" class="form-control" name="suspect_phone[]">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-2">
@@ -158,7 +165,7 @@ include "./includes/session.php";
                                                         <label for="">Address: </label>
                                                     </div>
                                                     <div class="col">
-                                                        <input required type="text" class="form-control" name="suspect_address[]">
+                                                        <input required type="text" value="<?php echo $row['address'] ?>" class="form-control" name="suspect_address[]">
                                                     </div>
                                                 </div>
                                             </div>
@@ -166,7 +173,6 @@ include "./includes/session.php";
                                     <?php
                                     }
                                     ?>
-                                    <hr>
                                     <div class="card">
                                         <div class="card-body">
                                             <p class="form-text text-primary">
@@ -178,7 +184,7 @@ include "./includes/session.php";
                                                     <label for="date">Date: </label>
                                                 </div>
                                                 <div class="col">
-                                                    <input required type="date" class="form-control" id="date" name="<?php echo $blotter['date'] ?>">
+                                                    <input required type="date" class="form-control" id="date" name="date" value="<?php echo $blotter['date'] ?>">
                                                 </div>
                                             </div>
                                             <!-- time -->
@@ -187,7 +193,7 @@ include "./includes/session.php";
                                                     <label for="time">Time: </label>
                                                 </div>
                                                 <div class="col">
-                                                    <input required type="time" class="form-control" id="time" name="time">
+                                                    <input required type="time" class="form-control" value="<?php echo $blotter['time'] ?>" id="time" name="time">
                                                 </div>
                                             </div>
                                             <div class="row mb-2">
@@ -195,7 +201,7 @@ include "./includes/session.php";
                                                     <label for="reason">Action taken: </label>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" id="action" name="action" required>
+                                                    <input type="text" class="form-control" id="action" value="<?php echo $blotter['action'] ?>" name="action" required>
                                                 </div>
                                             </div>
                                             <!-- reasone -->
@@ -204,7 +210,7 @@ include "./includes/session.php";
                                                     <label for="reason">Complaint: </label>
                                                 </div>
                                                 <div class="col">
-                                                    <textarea required name="reason" id="reason" class="form-control" cols="30" rows="10"></textarea>
+                                                    <textarea required name="reason" id="reason" class="form-control" cols="30" rows="10"><?php echo $blotter['reason'] ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,7 +219,7 @@ include "./includes/session.php";
                             </div>
                             <div class="d-flex" style="justify-content: space-between;">
                                 <button type="button" class="btn btn-sm btn-secondary " data-dismiss="modal">Cancel</button>
-                                <button type="submit" name="add" class="btn btn-sm btn-primary ">Add</button>
+                                <button type="submit" name="save" class="btn btn-sm btn-primary ">Update</button>
                             </div>
                         </form>
                     </div>

@@ -2,7 +2,7 @@
 include("./conn/conn.php");
 session_start();
 
-if (isset($_SESSION['user_id']) && $_SESSION['user_type']) {
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_type'])) {
     switch ($_SESSION['user_type']) {
         case "3":
             header("Location:home.php");

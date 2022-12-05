@@ -56,11 +56,27 @@ include "./includes/user_session.php";
                                     <?php
                                     $query = run_query("SELECT * FROM blotter ORDER BY status asc, id desc");
                                     while ($bRow = $query->fetch_assoc()) {
-
+                                        // get suspects
+                                        $blotter_id = $bRow['id'];
+                                        $get_suspects = run_query("SELECT * FROM suspect WHERE suspect_group IN (SELECT id FROM suspect_group WHERE blotter_id = $blotter_id)");
+                                        $group_id = run_query("SELECT id FROM suspect_group WHERE blotter_id=" . $bRow['id'])->fetch_array()[0];
                                     ?>
                                         <tr>
                                             <td><?php echo $bRow['complainant'] ?></td>
-                                            <td><?php echo $bRow['suspect'] ?></td>
+                                            <td>
+                                                <?php
+                                                if ($get_suspects->num_rows > 1) {
+                                                    // $suspect = $get_suspects->fetch_assoc();
+                                                ?>
+                                                    <?php echo $get_suspects->num_rows ?> suspects
+                                                <?php
+                                                } else {
+                                                    $suspect = $get_suspects->fetch_assoc();
+
+                                                    echo $suspect['name'];
+                                                }
+                                                ?>
+                                            </td>
                                             <td>
                                                 <a href="#" data-toggle="tooltip" data-placement="top" title="View complainant's complaints">
                                                     <button data-target="#reasonModal" data-toggle="modal" data-id="<?php echo $bRow['id'] ?>" class="edit btn btn-dark btn-sm"><span class="fa fa-eye"></span> View</button>
@@ -83,8 +99,8 @@ include "./includes/user_session.php";
                                                     </a>
 
                                                     <div class="dropdown-menu bg-light shadow" aria-labelledby="dropdownMenuLink">
-                                                        <a class="dropdown-item view-info" data-id="<?php echo $bRow['id'] ?>" data-type="suspect" data-title="Suspect Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['suspect'] ?>">
-                                                            <i class="fa fa-info-circle"></i> Suspect Info
+                                                        <a href="user-view-blotter.php?id=<?php echo $bRow['id'] ?>" class=" dropdown-item" data-id="<?php echo $group_id ?>">
+                                                            <i class='bx bx-fullscreen'></i> View
                                                         </a>
                                                         <a class="dropdown-item view-info" data-id="<?php echo $bRow['id'] ?>" data-type="complainant" data-title="Complainant Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['complainant'] ?>">
                                                             <i class="fa fa-info-circle"></i> Complainant Info

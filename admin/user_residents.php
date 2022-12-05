@@ -92,6 +92,10 @@
                                                                 <i class="bx bx-note"></i> Print Indigency
                                                             </button>
                                                         </a>
+                                                        <a class="dropdown-item" href="user-filebox.php?id=<?php echo $row['rID'] ?>">
+                                                         <i class=" bx bx-box"></i>  File Box
+                                                        </a>
+                                                       
 
                                                     </div>
                                                 </div>

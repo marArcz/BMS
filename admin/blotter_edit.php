@@ -16,19 +16,17 @@
         $time = $_POST['time'];
         $action = $_POST['action'];
         $id=$_POST['id'];
-        $sql="UPDATE blotter SET complainant=?,complainant_age=?,complainant_address=?,complainant_phone=?,suspect=?,suspect_age=?,suspect_address=?,suspect_phone=?,reason=?,date=?,time=?,action=? WHERE id=?";
+        $group_id = $_POST['group_id'];
+
+        $sql="UPDATE blotter SET complainant=?,complainant_age=?,complainant_address=?,complainant_phone=?,reason=?,date=?,time=?,action=? WHERE id=?";
         
         if($query = prep_stmt($sql)){
             $query->bind_param(
-                "ssssssssssssi",
+                "ssssssssi",
                 $complainant,
                 $complainant_age,
                 $complainant_address,
                 $complainant_phone,
-                $suspect,
-                $suspect_age,
-                $suspect_address,
-                $suspect_phone,
                 $reason,
                 $date,
                 $time,
@@ -36,6 +34,22 @@
                 $id,
             );
             if($query->execute()){
+                // delete suspects first
+                run_query("DELETE FROM suspect WHERE suspect_group = $group_id");
+                $add_suspect = prep_stmt("INSERT INTO suspect(name,phone,address,age,suspect_group) VALUES(?,?,?,?,?)");
+                for ($x = 0; $x < count($suspect); $x++) {
+                    $add_suspect->bind_param(
+                        "ssssi",
+                        $suspect[$x],
+                        $suspect_phone[$x],
+                        $suspect_address[$x],
+                        $suspect_age[$x],
+                        $group_id
+                    );
+    
+                    $add_suspect->execute() or die("Cannot add suspect!");
+                }
+    
                 LogAction($_SESSION['admin_id'],"Updated a blotter record");
                 $_SESSION['success'] = "Blotter record was updated successfully";
             }

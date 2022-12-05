@@ -119,6 +119,9 @@
                                                             </button>
                                                         </a>
 
+                                                        <a class="dropdown-item" href="filebox.php?id=<?php echo $row['rID'] ?>">
+                                                            <i class="bx bx-box"></i> File box
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -209,15 +212,15 @@
                     $("#del_img_preview").attr("src", res.photo);
                     $(".residentBox").val(id);
                     // view Information
-                    var fields = ["fname", "mname", "lname", "gender", "bdate", "bplace", "age", "education", "religion", "nationality", "civil_status", "occupation", "income", "household", "condition", "blood", "relationship","voter"];
+                    var fields = ["fname", "mname", "lname", "gender", "bdate", "bplace", "age", "education", "religion", "nationality", "civil_status", "occupation", "income", "household", "condition", "blood", "relationship", "voter"];
                     var household = `No. ${res.number} Zone ${res.zone}`;
                     // var age = res.age > 1 ? `${res.age} yr. old` : `${res.age} yrs. old`
                     var values = [res.firstname, res.middlename, res.lastname, res.gender, res.birthDate, res.birthPlace, res.age, res.education, res.religion, res.nationality, res.civilStatus, res.occupation, res.income, household, res.healthCondition, res.bloodType, res.relationshipToHead, res.voter];
                     $("#view_img").attr("src", res.photo);
                     for (let x = 0; x < fields.length; x++) {
-                        if(fields[x] == "voter"){
-                            $(`#view_${fields[x]}`).html(values[x] == 1 ? "Yes":"No");
-                        }else{
+                        if (fields[x] == "voter") {
+                            $(`#view_${fields[x]}`).html(values[x] == 1 ? "Yes" : "No");
+                        } else {
                             $(`#view_${fields[x]}`).html(values[x]);
                         }
 
@@ -229,15 +232,13 @@
                             } else {
                                 $("#normal_condition").attr("checked", true);
                             }
-                        }
-                        else if(fields[x] == "voter"){
+                        } else if (fields[x] == "voter") {
                             if (res.voter == 1) {
                                 $("#voter-option-yes").attr("checked", true);
                             } else {
                                 $("#voter-option-no").attr("checked", true);
                             }
-                        }
-                        else if (fields[x] == "household") {
+                        } else if (fields[x] == "household") {
                             $(`#edit_${fields[x]}`).val(res.household).html(household);
                         } else {
                             $(`#edit_${fields[x]}`).val(values[x]);
@@ -268,7 +269,7 @@
             getRow(id);
         })
 
-        $("#bdate").on("change",function(e){
+        $("#bdate").on("change", function(e) {
             let year_today = new Date().getFullYear();
             // letnew Date($(this).val())
             let birth_year = new Date($(this).val()).getFullYear();
@@ -277,7 +278,7 @@
 
             $("#age").val(age)
         })
-        $("#edit_bdate").on("change",function(e){
+        $("#edit_bdate").on("change", function(e) {
             let year_today = new Date().getFullYear();
             // letnew Date($(this).val())
             let birth_year = new Date($(this).val()).getFullYear();

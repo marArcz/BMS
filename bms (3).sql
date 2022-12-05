@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2022 at 02:20 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- Generation Time: Dec 05, 2022 at 06:50 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,23 +51,25 @@ INSERT INTO `baranggay` (`id`, `name`, `province`, `city`, `baranggayLogo`, `cit
 
 CREATE TABLE `blotter` (
   `id` int(11) NOT NULL,
-  `complainant` int(11) NOT NULL,
-  `suspect` int(11) NOT NULL,
+  `complainant` varchar(255) NOT NULL,
   `reason` varchar(255) NOT NULL,
   `action` varchar(255) NOT NULL,
   `date` varchar(255) NOT NULL,
   `time` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL,
+  `complainant_age` int(11) NOT NULL,
+  `complainant_address` varchar(255) NOT NULL,
+  `complainant_phone` varchar(255) NOT NULL,
+  `is_deleted` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `blotter`
 --
 
-INSERT INTO `blotter` (`id`, `complainant`, `suspect`, `reason`, `action`, `date`, `time`, `status`) VALUES
-(4, 7, 8, 'sinungaling', 'Cagayan', '2022-03-25', '13:05', 0),
-(5, 9, 7, 'pangit', 'None', '2022-07-12', '23:55', 1),
-(6, 7, 9, 'fhdfhdfhfh', 'None', '2022-07-17', '22:45', 0);
+INSERT INTO `blotter` (`id`, `complainant`, `reason`, `action`, `date`, `time`, `status`, `complainant_age`, `complainant_address`, `complainant_phone`, `is_deleted`) VALUES
+(25, 'Ng Technician', 'njnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnjkbnjkhnasji bfjiasjfisduii iosjfusdfu sdfua h7tuh  uygqya gyuasg a8 agauydhuaigdadajjpo ajpojisadjsdasjdijffjaojfjasfjasgjsfjij jzjs09s asfakfojsjfoisjfoisvkvlvpukzjfj q alapa d=as cadaipas a -asif a\r\na fasi fasf', 'None', '2022-12-05', '19:49', 1, 14, 'Philippines', '09691624065', 0),
+(26, 'Ranie Martinez', 'Pinatay', 'None', '2022-12-14', '20:18', 1, 23, 'Philippines', '09691624065', 0);
 
 -- --------------------------------------------------------
 
@@ -81,20 +83,15 @@ CREATE TABLE `blotter_history` (
   `suspect` varchar(255) NOT NULL,
   `age` int(11) NOT NULL,
   `reason` varchar(255) NOT NULL,
-  `date` varchar(255) NOT NULL,
-  `time` varchar(255) NOT NULL
+  `date` date NOT NULL,
+  `time` varchar(255) NOT NULL,
+  `complainant_age` varchar(255) NOT NULL,
+  `complainant_address` varchar(255) NOT NULL,
+  `complainant_phone` varchar(255) NOT NULL,
+  `suspect_phone` varchar(255) NOT NULL,
+  `suspect_age` varchar(255) NOT NULL,
+  `suspect_address` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `blotter_history`
---
-
-INSERT INTO `blotter_history` (`id`, `complainant`, `suspect`, `age`, `reason`, `date`, `time`) VALUES
-(2, 'Jaylord Cabanglan', 'Jaylord Cabanglan', 1, 'pinatay', '2022-03-25', '00:23'),
-(3, 'Jaylord Cabanglan', 'Jaylord Cabanglan', 1, 'Tumakas', '2022-03-25', '01:31'),
-(4, 'Jaylord Cabanglan', 'jerick De Guzman', 24, 'sinungaling', '2022-03-25', '13:05'),
-(5, 'Ng Technician', 'Jaylord Cabanglan', 1, 'pangit', '2022-07-12', '23:55'),
-(6, 'Jaylord Cabanglan', 'Ng Technician', 23, 'fhdfhdfhfh', '2022-07-17', '22:45');
 
 -- --------------------------------------------------------
 
@@ -116,7 +113,8 @@ CREATE TABLE `household` (
 
 INSERT INTO `household` (`id`, `number`, `zone`, `family`, `head`) VALUES
 (2, '333', '4', '2', 'Mother'),
-(3, '3334', '4', '7', 'Father');
+(3, '3334', '4', '7', 'Father'),
+(4, '123', '1', '1', 'Mother');
 
 -- --------------------------------------------------------
 
@@ -199,7 +197,65 @@ INSERT INTO `log` (`id`, `user`, `activity`, `date`) VALUES
 (77, 5, 'Changed baranggay logo', 'July 17, 2022 10:48:pm'),
 (78, 5, 'Changed city logo', 'July 17, 2022 10:48:pm'),
 (79, 5, 'Changed baranggay logo', 'July 17, 2022 10:51:pm'),
-(80, 5, 'Changed city logo', 'July 17, 2022 10:51:pm');
+(80, 5, 'Changed city logo', 'July 17, 2022 10:51:pm'),
+(81, 5, 'Updated a resident record', 'November 02, 2022 02:05:pm'),
+(82, 5, 'Added a new Resident', 'November 02, 2022 02:08:pm'),
+(83, 5, 'Updated a blotter status', 'November 06, 2022 08:18:am'),
+(84, 5, 'Updated a blotter status', 'November 06, 2022 08:18:am'),
+(85, 5, 'Updated a blotter status', 'November 06, 2022 08:31:am'),
+(86, 5, 'Added a new blotter record', 'November 06, 2022 09:19:am'),
+(87, 5, 'Added a new blotter record', 'November 06, 2022 09:53:am'),
+(88, 5, 'Updated a blotter status', 'November 06, 2022 01:30:pm'),
+(89, 5, 'Updated a blotter status', 'November 06, 2022 01:30:pm'),
+(90, 5, 'Added a new household', 'November 06, 2022 04:02:pm'),
+(91, 5, 'Updated a household', 'November 06, 2022 04:02:pm'),
+(92, 5, 'Updated account information', 'November 06, 2022 04:06:pm'),
+(93, 5, 'Added a new Resident', 'November 06, 2022 07:54:pm'),
+(94, 5, 'Added a new Resident', 'November 06, 2022 09:52:pm'),
+(95, 5, 'Added a new blotter record', 'November 06, 2022 09:55:pm'),
+(96, 5, 'Updated a blotter record', 'November 06, 2022 09:55:pm'),
+(97, 5, 'Updated a resident record', 'November 09, 2022 08:03:pm'),
+(98, 5, 'Updated a resident record', 'November 09, 2022 08:03:pm'),
+(99, 5, 'Updated a resident record', 'November 09, 2022 08:03:pm'),
+(100, 5, 'Added a payment', 'November 12, 2022 08:35:pm'),
+(101, 5, 'Updated a blotter status', 'November 12, 2022 08:48:pm'),
+(102, 5, 'Updated a blotter status', 'November 12, 2022 08:48:pm'),
+(103, 5, 'Updated a blotter status', 'November 12, 2022 08:48:pm'),
+(104, 5, 'Added a new blotter record', 'November 12, 2022 09:56:pm'),
+(105, 5, 'Updated a blotter status', 'November 12, 2022 09:58:pm'),
+(106, 5, 'Updated a blotter status', 'November 12, 2022 09:58:pm'),
+(107, 5, 'Updated a blotter status', 'November 12, 2022 09:58:pm'),
+(108, 5, 'Updated a blotter record', 'November 12, 2022 10:29:pm'),
+(109, 5, 'Updated a blotter record', 'November 12, 2022 10:36:pm'),
+(110, 5, 'Added a new blotter record', 'November 12, 2022 10:37:pm'),
+(111, 5, 'Updated a blotter record', 'November 12, 2022 10:39:pm'),
+(112, 5, 'Updated a blotter record', 'November 12, 2022 10:39:pm'),
+(113, 5, 'Updated a blotter status', 'November 12, 2022 10:41:pm'),
+(114, 5, 'Updated a blotter record', 'November 12, 2022 10:53:pm'),
+(115, 5, 'Updated a blotter status', 'November 13, 2022 12:35:am'),
+(116, 5, 'Added a new Resident', 'November 13, 2022 12:45:am'),
+(117, 5, 'Updated a resident record', 'November 13, 2022 10:32:am'),
+(118, 5, 'Updated a resident record', 'November 13, 2022 10:32:am'),
+(119, 5, 'Updated a household', 'November 13, 2022 10:38:am'),
+(120, 5, 'Updated a household', 'November 13, 2022 10:38:am'),
+(121, 5, 'Updated a blotter status', 'November 13, 2022 10:44:pm'),
+(122, 5, 'Updated a blotter record', 'November 13, 2022 10:44:pm'),
+(123, 5, 'Added a new blotter record', 'December 05, 2022 07:41:pm'),
+(124, 5, 'Added a new blotter record', 'December 05, 2022 07:50:pm'),
+(125, 5, 'Updated a blotter status', 'December 05, 2022 08:14:pm'),
+(126, 5, 'Updated a blotter status', 'December 05, 2022 08:14:pm'),
+(127, 5, 'Updated a blotter status', 'December 05, 2022 08:14:pm'),
+(128, 5, 'Added a new blotter record', 'December 05, 2022 08:16:pm'),
+(129, 5, 'Updated a blotter status', 'December 05, 2022 08:38:pm'),
+(130, 5, 'Updated a blotter status', 'December 05, 2022 08:38:pm'),
+(131, 5, 'Updated a blotter status', 'December 05, 2022 08:38:pm'),
+(132, 5, 'Updated a blotter status', 'December 05, 2022 08:38:pm'),
+(133, 5, 'Updated a blotter status', 'December 05, 2022 10:10:pm'),
+(134, 5, 'Updated a blotter status', 'December 05, 2022 10:10:pm'),
+(135, 5, 'Updated a blotter status', 'December 05, 2022 10:10:pm'),
+(136, 5, 'Updated a blotter status', 'December 05, 2022 10:10:pm'),
+(137, 5, 'Updated a blotter record', 'December 05, 2022 11:47:pm'),
+(138, 5, 'Updated a blotter record', 'December 05, 2022 11:47:pm');
 
 -- --------------------------------------------------------
 
@@ -255,7 +311,7 @@ CREATE TABLE `memos` (
 
 INSERT INTO `memos` (`id`, `content`, `createdAt`) VALUES
 (1, '                                                <div class=\"container-fluid py-5\">\r\n                            <div class=\"row justify-content-center form-header\">\r\n                                <div class=\"col\">\r\n                                    <div class=\"row justify-content-center\">\r\n                                        <div class=\"col-8\">\r\n                                            <img src=\"uploads/gogon seal.jpg\" alt=\"\" id=\"baranggayLogo\" class=\"img-fluid logo\">\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"col-6\">\r\n                                    <div class=\"text-center\">\r\n                                        <p class=\"text-capitalize\">Republic of the Philippines</p>\r\n                                        <!-- <p class=\"text-capitalize\">Province of <span id=\"province-txt\">Catanduanes</span></p> -->\r\n                                        <p class=\"text-capitalize\">City of <span id=\"city-txt\">Virac</span></p>\r\n                                        <p class=\"text-uppercase\">\r\n                                            <strong>Baranggay <span id=\"baranggay-name\">Gogon Centro</span></strong>\r\n                                        </p>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"col\">\r\n                                    <div class=\"row justify-content-center\">\r\n                                        <div class=\"col-8\">\r\n                                            <img id=\"cityLogo\" src=\"uploads/10295673_665387956832134_5976150555657543474_n.png\" alt=\"\" class=\"img-fluid logo\">\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <hr>\r\n                            <div class=\"container px-5 mt-5\">\r\n                                <div class=\"header\">\r\n                                <p><b>17 March 2022</b></p>\r\n\r\n                                <p><b>MEMORANDUM FOR: <span id=\"purpose-txt\">Concerned Residents</span></b></p>\r\n                                </div>\r\n                                <div class=\"mt-2\">\r\n                                    Write the content here...\r\n                                </div>\r\n\r\n                                <div class=\"position-absolute\" style=\"bottom:30px\">\r\n                                    <p><b>JOHN D. DOE</b></p>\r\n                                    <p>Punong Baranggay</p>\r\n                                </div>\r\n                            </div>\r\n\r\n                        </div>\r\n                        ', '2022-03-17 14:12:57'),
-(2, '                                                <div class=\"container-fluid py-5\">\n                            <div class=\"row justify-content-center form-header\">\n                                <div class=\"col\">\n                                    <div class=\"row justify-content-center\">\n                                        <div class=\"col-8\">\n                                            <img src=\"uploads/download.png\" alt=\"\" id=\"baranggayLogo\" class=\"img-fluid logo\">\n                                        </div>\n                                    </div>\n                                </div>\n                                <div class=\"col-6\">\n                                    <div class=\"text-center\">\n                                        <p class=\"text-capitalize\">Republic of the Philippines</p>\n                                        <!-- <p class=\"text-capitalize\">Province of <span id=\"province-txt\">Catanduanes</span></p> -->\n                                        <p class=\"text-capitalize\">City of <span id=\"city-txt\">Sta. Teresita</span></p>\n                                        <p class=\"text-uppercase\">\n                                            <strong>Baranggay <span id=\"baranggay-name\">Simpatuyo</span></strong>\n                                        </p>\n                                    </div>\n                                </div>\n                                <div class=\"col\">\n                                    <div class=\"row justify-content-center\">\n                                        <div class=\"col-8\">\n                                            <img id=\"cityLogo\" src=\"uploads/download.jpg\" alt=\"\" class=\"img-fluid logo\">\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>\n                            <hr>\n                            <div class=\"container px-5 mt-5\">\n                                <div class=\"header\">\n                                <p><b>17 March 2022</b></p>\n\n                                <p><b>MEMORANDUM FOR: <span id=\"purpose-txt\">Job application</span></b></p>\n                                </div>\n                                <div class=\"mt-2\">\n                                    Write the content here...\n                                </div>\n\n                                <div class=\"position-absolute\" style=\"bottom:30px\">\n                                    <p><b>JOHN D. DOE</b></p>\n                                    <p>Punong Baranggay</p>\n                                </div>\n                            </div>\n\n                        </div>\n                        ', '0000-00-00 00:00:00');
+(2, '                                                <div class=\"container-fluid py-5\">\n                            <div class=\"row justify-content-center form-header\">\n                                <div class=\"col\">\n                                    <div class=\"row justify-content-center\">\n                                        <div class=\"col-8\">\n                                            <img src=\"uploads/download.png\" alt=\"\" id=\"baranggayLogo\" class=\"img-fluid logo\">\n                                        </div>\n                                    </div>\n                                </div>\n                                <div class=\"col-6\">\n                                    <div class=\"text-center\">\n                                        <p class=\"text-capitalize\">Republic of the Philippines</p>\n                                        <!-- <p class=\"text-capitalize\">Province of <span id=\"province-txt\">Catanduanes</span></p> -->\n                                        <p class=\"text-capitalize\">City of <span id=\"city-txt\">Sta. Teresita</span></p>\n                                        <p class=\"text-uppercase\">\n                                            <strong>Baranggay <span id=\"baranggay-name\">Simpatuyo</span></strong>\n                                        </p>\n                                    </div>\n                                </div>\n                                <div class=\"col\">\n                                    <div class=\"row justify-content-center\">\n                                        <div class=\"col-8\">\n                                            <img id=\"cityLogo\" src=\"uploads/download.jpg\" alt=\"\" class=\"img-fluid logo\">\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>\n                            <hr>\n                            <div class=\"container px-5 mt-5\">\n                                <div class=\"header\">\n                                <p><b>17 March 2022</b></p>\n\n                                <p><b>MEMORANDUM FOR: <span id=\"purpose-txt\">Job application</span></b></p>\n                                </div>\n                                <div class=\"mt-2\"><br></div><div class=\"mt-2\"><br></div>\n\n                                <div class=\"position-absolute\" style=\"bottom:30px\">\n                                    <p><b>JOHN D. DOE</b></p>\n                                    <p>Punong Baranggay</p>\n                                </div>\n                            </div>\n\n                        </div>\n                        ', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -383,19 +439,54 @@ CREATE TABLE `residents` (
   `religion` varchar(255) NOT NULL,
   `nationality` varchar(255) NOT NULL,
   `education` varchar(255) NOT NULL,
-  `photo` varchar(255) NOT NULL
+  `photo` varchar(255) NOT NULL,
+  `voter` int(11) NOT NULL DEFAULT 1 COMMENT '1-true\r\n2-false',
+  `phone` varchar(255) NOT NULL,
+  `mother` varchar(255) NOT NULL,
+  `father` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `residents`
 --
 
-INSERT INTO `residents` (`id`, `firstname`, `middlename`, `lastname`, `age`, `gender`, `birthDate`, `birthPlace`, `healthCondition`, `relationshipToHead`, `bloodType`, `civilStatus`, `occupation`, `income`, `household`, `religion`, `nationality`, `education`, `photo`) VALUES
-(7, 'Jaylord', 'Perlas', 'Cabanglan', 32, 'Male', '2021-08-25', 'Centro, Sta Ana, Cagayan', 'Normal', 'Mother', 'AB', 'Single', 'Aircon Tech.', '10000', 2, 'INC', 'Filipino', 'College Graduate', 'uploads/276023909_1598777367145732_6577766713375944241_n.jpg'),
-(8, 'jerick', 'l', 'De Guzman', 24, 'Male', '1996-03-25', 'Sta ana cagayan', 'Normal', 'Mother', 'AB', 'Married', 'carpenter', '50000', 2, 'INC', 'pilipino', 'Highschool Graduate', 'uploads/profile.jpg'),
-(9, 'Ng', 'Bayan', 'Technician', 23, 'Male', '1999-08-25', 'Centro, Sta Ana, Cagayan', 'Normal', 'Mother', 'AB', 'Single', 'All around', '30000', 2, 'INC', 'Filipino', 'College Graduate', 'uploads/inbound8323485347457219292.jpg'),
-(10, 'Ranie', 'Cutad', 'Martinez', 20, 'Female', '2018-12-20', 'Sta teresita ', 'Normal', 'Spouse', 'AB', 'Single', 'Na', '1000', 2, 'Roman Catholic', 'Filipino', 'College Graduate', 'uploads/profile.jpg'),
-(11, 'Marlo', 'Arcilla', 'Zafe', 20, 'Male', '2002-03-13', 'Marilima Virac Catandauanes', 'Normal', 'Son', 'O', 'Single', 'Full Stack Web Developer', '300000', 2, 'Catholic', 'Filipino', 'Highschool Graduate', 'uploads/profile.jpg');
+INSERT INTO `residents` (`id`, `firstname`, `middlename`, `lastname`, `age`, `gender`, `birthDate`, `birthPlace`, `healthCondition`, `relationshipToHead`, `bloodType`, `civilStatus`, `occupation`, `income`, `household`, `religion`, `nationality`, `education`, `photo`, `voter`, `phone`, `mother`, `father`) VALUES
+(7, 'Jaylord', 'Perlas', 'Cabanglan', 60, 'Male', '2021-08-25', 'Centro, Sta Ana, Cagayan', 'PWD', 'Mother', 'AB', 'Single', 'Aircon Tech.', '10000', 2, 'INC', 'Filipino', 'College Graduate', 'uploads/276023909_1598777367145732_6577766713375944241_n.jpg', 1, '', '', ''),
+(8, 'jerick', 'l', 'De Guzman', 24, 'Male', '1996-03-25', 'Sta ana cagayan', 'Normal', 'Mother', 'AB', 'Married', 'carpenter', '50000', 2, 'INC', 'pilipino', 'Highschool Graduate', 'uploads/profile.jpg', 1, '', '', ''),
+(9, 'Ng', 'Bayan', 'Technician', 23, 'Male', '1999-08-25', 'Centro, Sta Ana, Cagayan', 'Normal', 'Mother', 'AB', 'Single', 'All around', '30000', 2, 'INC', 'Filipino', 'College Graduate', 'uploads/inbound8323485347457219292.jpg', 1, '', '', ''),
+(10, 'Ranie', 'Cutad', 'Martinez', 20, 'Female', '2018-12-20', 'Sta teresita ', 'Normal', 'Spouse', 'AB', 'Single', 'Na', '1000', 2, 'Roman Catholic', 'Filipino', 'College Graduate', 'uploads/profile.jpg', 1, '', '', ''),
+(14, 'John', 'Dee', 'Doe', 20, 'Male', '2002-12-03', 'Centro, Sta Ana, Cagayan', 'Normal', 'None', 'B', 'Married', 'dfhdfhdfhdf', '546', 2, 'dfhdfh', 'dfhdfhdfh', 'College Under Graduate', 'uploads/profile.jpg', 1, '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resident_files`
+--
+
+CREATE TABLE `resident_files` (
+  `id` int(11) NOT NULL,
+  `resident_id` int(11) NOT NULL,
+  `file` varchar(255) NOT NULL,
+  `label` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `resident_files`
+--
+
+INSERT INTO `resident_files` (`id`, `resident_id`, `file`, `label`) VALUES
+(4, 7, 'assets/documents/library-bg.webp', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL,
+  `theme` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -422,6 +513,54 @@ INSERT INTO `summon` (`id`, `page1`, `page2`, `page3`, `createdAt`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `suspect`
+--
+
+CREATE TABLE `suspect` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `age` varchar(255) NOT NULL,
+  `suspect_group` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `suspect`
+--
+
+INSERT INTO `suspect` (`id`, `name`, `phone`, `address`, `age`, `suspect_group`) VALUES
+(1, 'Ranie Martinez', '09691624065', 'Philippines', '23', '2'),
+(2, 'Ranie Martinez', '09691624065', 'Philippines', '23', '3'),
+(3, 'Ranie Martinez', '09691624065', 'Philippines', '23', '4'),
+(4, 'jerick De Guzman', '09691624065', 'Philippines', '22', '5'),
+(5, 'jerick De Guzman', '09691624065', 'Philippines', '22', '6'),
+(6, 'jerick De Guzman', '09691624065', 'Philippines', '22', '7'),
+(11, 'John Doe', '09691624065', 'Philippines', '25', '8'),
+(12, 'Jaylord Cabanglan', '09691624065', 'Philippines', '12', '8');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `suspect_group`
+--
+
+CREATE TABLE `suspect_group` (
+  `id` int(11) NOT NULL,
+  `blotter_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `suspect_group`
+--
+
+INSERT INTO `suspect_group` (`id`, `blotter_id`) VALUES
+(7, 25),
+(8, 26);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -441,7 +580,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullname`, `gender`, `address`, `username`, `password`, `photo`, `type`) VALUES
-(5, 'BMS', 'Male', 'Philippines', 'admin', 'admin', 'uploads/profile.jpg', 3),
+(5, 'BMS', 'Male', 'Philippines', 'admin', 'admin', 'uploads/avatar-380-456332-512.webp', 3),
 (8, 'John Doe', 'Male', 'Philippines', 'johndoe', '12345', 'uploads/profile.jpg', 3),
 (11, 'paul', 'Male', 'gonzaga', 'paul', 'paul', 'uploads/profile.jpg', 1),
 (12, 'Angel Palma', 'Female', 'Simpatuyo Sta. Teresita Cagayan', 'anghel', 'Palma', 'uploads/inbound3373105797101345184.jpg', 1),
@@ -483,8 +622,7 @@ ALTER TABLE `baranggay`
 --
 ALTER TABLE `blotter`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `complainant` (`complainant`),
-  ADD KEY `suspect` (`suspect`);
+  ADD KEY `complainant` (`complainant`);
 
 --
 -- Indexes for table `blotter_history`
@@ -552,10 +690,35 @@ ALTER TABLE `residents`
   ADD KEY `household` (`household`);
 
 --
+-- Indexes for table `resident_files`
+--
+ALTER TABLE `resident_files`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `summon`
 --
 ALTER TABLE `summon`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `suspect`
+--
+ALTER TABLE `suspect`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `suspect_group`
+--
+ALTER TABLE `suspect_group`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `blotter_id` (`blotter_id`);
 
 --
 -- Indexes for table `users`
@@ -584,7 +747,7 @@ ALTER TABLE `baranggay`
 -- AUTO_INCREMENT for table `blotter`
 --
 ALTER TABLE `blotter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `blotter_history`
@@ -596,13 +759,13 @@ ALTER TABLE `blotter_history`
 -- AUTO_INCREMENT for table `household`
 --
 ALTER TABLE `household`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT for table `logbook`
@@ -644,13 +807,37 @@ ALTER TABLE `positions`
 -- AUTO_INCREMENT for table `residents`
 --
 ALTER TABLE `residents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `resident_files`
+--
+ALTER TABLE `resident_files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `summon`
 --
 ALTER TABLE `summon`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `suspect`
+--
+ALTER TABLE `suspect`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `suspect_group`
+--
+ALTER TABLE `suspect_group`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -667,13 +854,6 @@ ALTER TABLE `usertypes`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `blotter`
---
-ALTER TABLE `blotter`
-  ADD CONSTRAINT `blotter_ibfk_1` FOREIGN KEY (`complainant`) REFERENCES `residents` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `blotter_ibfk_2` FOREIGN KEY (`suspect`) REFERENCES `residents` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `log`
@@ -704,6 +884,12 @@ ALTER TABLE `permit`
 --
 ALTER TABLE `residents`
   ADD CONSTRAINT `residents_ibfk_1` FOREIGN KEY (`household`) REFERENCES `household` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `suspect_group`
+--
+ALTER TABLE `suspect_group`
+  ADD CONSTRAINT `suspect_group_ibfk_1` FOREIGN KEY (`blotter_id`) REFERENCES `blotter` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `users`
