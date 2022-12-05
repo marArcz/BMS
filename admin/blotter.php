@@ -117,23 +117,9 @@ include "./includes/session.php";
                                                     <a class="dropdown-item edit" href="#deleteModal" data-toggle="modal" data-id="<?php echo $bRow['id'] ?>">
                                                         <i class="fa fa-trash"></i> Delete
                                                     </a>
-                                                    <!-- <?php
-                                                    if ($get_suspects->num_rows == 1) {
-                                                    ?>
-                                                        <a class="dropdown-item view-info" data-type="suspect" data-id="<?php echo $suspect['id'] ?>" data-title="Suspect' Information" href="#infoModal" data-toggle="modal">
-                                                            <i class="fa fa-info-circle"></i> Suspect Info
-                                                        </a>
-                                                    <?php
-                                                    } else {
-                                                    ?>
-                                                        <a class="dropdown-item view-suspects" data-id="<?php echo $group_id ?>" data-title="Suspect' Information" href="#suspects-modal" data-toggle="modal">
-                                                            <i class="fa fa-info-circle"></i> View Suspects
-                                                        </a>
-                                                    <?php
-                                                    }
-                                                    ?> -->
+
                                                     <a href="view-blotter.php?id=<?php echo $bRow['id'] ?>" class=" dropdown-item" data-id="<?php echo $group_id ?>">
-                                                    <i class='bx bx-fullscreen'></i> View
+                                                        <i class='bx bx-fullscreen'></i> View
                                                     </a>
                                                     <a class="dropdown-item view-info" data-type="complainant" data-id="<?php echo $bRow['id'] ?>" data-title="Complainant Information" href="#infoModal" data-toggle="modal" data-name="<?php echo $bRow['complainant'] ?>">
                                                         <i class="fa fa-info-circle"></i> Complainant Info
