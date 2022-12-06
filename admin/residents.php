@@ -1,4 +1,8 @@
-<?php include "./includes/session.php" ?>
+<?php
+
+use PhpOffice\PhpSpreadsheet\RichText\Run;
+
+include "./includes/session.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,6 +48,9 @@
                                 <i class="bx bx-plus"></i> Add new
                             </button>
                         </a>
+                        <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#import-modal">
+                            Import Record
+                        </button>
                     </div>
 
                     <div class="card-body bg-white">
@@ -63,8 +70,16 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $query = run_query("SELECT *, residents.id AS rID FROM residents INNER JOIN household ON residents.household = household.id");
+                                    $query = run_query("SELECT *, residents.id AS rID FROM residents");
+
                                     while ($row = $query->fetch_assoc()) {
+                                        if ($row['household'] != NULL) {
+                                            $has_household = true;
+                                            $get_household = run_query("SELECT * FROM household WHERE id = " . $row['household']);
+                                            $household = $get_household->fetch_assoc();
+                                        } else {
+                                            $has_household = false;
+                                        }
                                     ?>
                                         <tr>
                                             <td><?php echo $row['firstname'] ?></td>
@@ -72,7 +87,17 @@
                                             <td><?php echo $row['lastname'] ?></td>
                                             <td><?php echo $row['age'] ?></td>
                                             <td><?php echo $row['gender'] ?></td>
-                                            <td>#<?php echo $row['number'] . ' zone ' . $row['zone'] ?></td>
+                                            <td>
+                                                <?php
+                                                if ($has_household) {
+                                                ?>
+                                                    #<?php echo $household['number'] . ' zone ' . $household['zone'] ?>
+                                                <?php
+                                                } else {
+                                                    echo $row['household_str'];
+                                                }
+                                                ?>
+                                            </td>
                                             <td class="text-center">
                                                 <img class="rounded-circle" src="<?php echo $row['photo'] ?>" alt="<?php echo $row['lastname'] . ' photo' ?>" width="30px" height="30px">
                                                 <a data-target="#imageModal" data-toggle="modal" class="btn text-primary btn-sm edit" data-id="<?php echo $row['rID'] ?>"><span class="fa fa-edit"></span></a>
@@ -213,7 +238,12 @@
                     $(".residentBox").val(id);
                     // view Information
                     var fields = ["fname", "mname", "lname", "gender", "bdate", "bplace", "age", "education", "religion", "nationality", "civil_status", "occupation", "income", "household", "condition", "blood", "relationship", "voter"];
-                    var household = `No. ${res.number} Zone ${res.zone}`;
+                    var household = ""
+                    if(res.has_household){
+                        household = res.household_record.household;
+                    }else{
+                        household = res.household_str
+                    }
                     // var age = res.age > 1 ? `${res.age} yr. old` : `${res.age} yrs. old`
                     var values = [res.firstname, res.middlename, res.lastname, res.gender, res.birthDate, res.birthPlace, res.age, res.education, res.religion, res.nationality, res.civilStatus, res.occupation, res.income, household, res.healthCondition, res.bloodType, res.relationshipToHead, res.voter];
                     $("#view_img").attr("src", res.photo);
@@ -239,7 +269,10 @@
                                 $("#voter-option-no").attr("checked", true);
                             }
                         } else if (fields[x] == "household") {
-                            $(`#edit_${fields[x]}`).val(res.household).html(household);
+                            if (res.has_household) {
+                                $(`#edit_${fields[x]}`).val(res.household_record.id).html(household);
+                            }
+
                         } else {
                             $(`#edit_${fields[x]}`).val(values[x]);
                         }

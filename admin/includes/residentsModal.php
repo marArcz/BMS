@@ -133,7 +133,7 @@
                                 <label for="occupation">Father:</label>
                                 <input required type="text" class="form-control" name="father" id="father">
                             </div>
-                            
+
                         </div>
                         <div class="row mb-2">
                             <div class="col-md">
@@ -614,6 +614,31 @@
                         <button type="submit" name="save" class="btn btn-sm btn-primary rounded-0"><i class="fa fa-save"></i> Save</button>
                     </div>
 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- import modal -->
+<div class="modal fade" id="import-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Import resident record</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="import-residents.php" enctype="multipart/form-data" method="POST">
+
+                    <div class="form-group mb-3">
+                        <label for="" class="form-label">Choose file:</label>
+                        <input type="file" class="form-control form-control-file" name="file">
+                    </div>
+
+                    <button class="btn btn-sm btn-dark" type="submit">Submit</button>
                 </form>
             </div>
         </div>

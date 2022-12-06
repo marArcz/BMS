@@ -51,24 +51,26 @@ if (isset($_POST['add'])) {
                 $add_suspect->execute() or die("Cannot add suspect!");
             }
 
-            // $q = prep_stmt("INSERT INTO blotter_history(complainant,complainant_age,complainant_address,complainant_phone, suspect,suspect_age,suspect_address,suspect_phone,reason,action,date,time,status) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            // $q->bind_param(
-            //     "ssssssssssssi",
-            //     $complainant,
-            //     $complainant_age,
-            //     $complainant_address,
-            //     $complainant_phone,
-            //     $suspect,
-            //     $suspect_age,
-            //     $suspect_address,
-            //     $suspect_phone,
-            //     $reason,
-            //     $action,
-            //     $date,
-            //     $time,
-            //     $status
-            // );
-            // $q->execute();
+            $add_to_history = prep_stmt("INSERT INTO blotter_history(complainant,complainant_age,complainant_address,complainant_phone, suspect,suspect_age,suspect_address,suspect_phone,reason,date,time) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+
+
+            for ($i = 0; $i < count($suspect); $i++) {
+                $add_to_history->bind_param(
+                    "ssssssssssi",
+                    $complainant,
+                    $complainant_age,
+                    $complainant_address,
+                    $complainant_phone,
+                    $suspect[$i],
+                    $suspect_age[$i],
+                    $suspect_address[$i],
+                    $suspect_phone[$i],
+                    $reason,
+                    $date,
+                    $time,
+                );
+                $add_to_history->execute();
+            }
 
             LogAction($_SESSION['admin_id'], "Added a new blotter record");
             $_SESSION['success'] = "Blotter record was added successfully";
