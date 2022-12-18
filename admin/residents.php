@@ -282,7 +282,11 @@ include "./includes/session.php" ?>
                     $(".b_form #resident_name").html(`${res.firstname} ${res.middlename} ${res.lastname}`);
                     $(".b_form #civil_status").html(res.civilStatus);
                     $(".b_form #nationality").html(res.nationality);
-                    $(".b_form #street").html(`${res.number} Zone ${res.zone}`);
+                    if(res.has_household){
+                        $(".b_form #street").html(`${res.household_record.number} Zone ${res.household_record.zone}`);
+                    }else{
+                        $(".b_form #street").html(res.household_str);
+                    }
 
                     $("#view_phone").html(res.phone)
                     $("#view_mother").html(res.mother)

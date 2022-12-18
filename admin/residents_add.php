@@ -32,7 +32,7 @@
         $mother = $_POST['mother'];
         $father = $_POST['father'];
         
-        $sql="INSERT INTO residents(firstname,middlename,lastname,age,gender,birthDate,birthPlace,healthCondition,relationshipToHead,bloodType,civilStatus,occupation,household,religion,nationality,education,photo,voter,phone,mother,father) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $sql="INSERT INTO residents(firstname,middlename,lastname,age,gender,birthDate,birthPlace,healthCondition,relationshipToHead,bloodType,civilStatus,occupation,income,household,religion,nationality,education,photo,voter,phone,mother,father) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         
         if($query = prep_stmt($sql)){
             $query->bind_param("sssssssssssssissssssss",
